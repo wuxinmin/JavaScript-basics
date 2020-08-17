@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        /* css3 选择器 */
+        li:nth-of-type(2n){
+            background-color: #f40;
+        }
+        li:nth-of-type(2n+1){
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+    </ul>
+    <script>
+        var licollection = document.getElementsByTagName('li');
+        // 直接这样就不行了，产生闭包问题，利用立即执行函数
+       /*  for(var i = 0; i < licollection.length; i++){
+            licollection[i].onclick = function () {
+                console.log(i);
+                
+            }
+        } */
+        for(var i = 0; i < licollection.length; i++){
+            (function(j){
+                licollection[j].onclick = function () {
+                console.log(j);    
+            }
+            }(i))
+        }
+    </script>
+</body>
+</html>

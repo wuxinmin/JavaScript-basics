@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 求结果
+        var f = (
+            function f() {
+                return "1";
+            },
+            function g() {
+                return 2;
+            }
+        )();
+        console.log(typeof f);  //number
+    </script>
+    <script>
+        var x = 1;
+        if(function f() {}){  //不管怎样他都是一个（）括号，就是一个（）运算符执行完就会消失
+            x = x + typeof f;  //未经声明的变量只有放在typeof里面不会报错 返回字符串undefined
+        }
+        console.log(x); //故答案为字符串 1undefined
+    </script>
+</body>
+</html>
