@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!--  <script>
+        function animal(name) {
+            if( name == '老鼠') {
+                console.log('我是一只老鼠，叽叽');
+                
+            }else if(name == '小狗') {
+                console.log('我是一只。。，汪汪');
+                
+            }else if(name == '小猫') {
+                console.log('我是。。，喵喵');
+                
+            }else if(name == '小鸡') {
+                console.log('我是。。。。，喳喳');
+                
+            }
+        }
+    </script> -->
+
+    <!-- <script>
+        var s = 0;
+        function add(a) {
+            for(var i = 0; i < a+1; i++) {
+                s = s + i;
+            }
+            console.log(s);
+        }
+        
+        
+        add(9)
+    </script> -->
+
+
+    <!-- 重要 -->
+   <!--  <script>
+        function reversal() {
+            var num = window.prompt('input');
+            var str = '';
+            for(var i = num.length - 1; i >= 0; i--) {
+                str += transfer(num[i]);
+            }
+            console.log(str);   
+        }
+        function transfer(target) {
+            switch(target) {
+                case '1': 
+                   return "一";
+                case '2':
+                   return "二";
+                case '3':
+                   return "三";
+            }
+        }
+        reversal()
+    </script> -->
+
+
+    <!-- 递归 -->
+    <script>
+        //阶乘
+        // 5! = 5*4!
+        function mul(n) {
+            if( n == 1 || n == 0) {
+                return 1
+            }
+            return n * mul(n-1);
+        }
+    </script>
+    <script>
+      //斐波那契数列
+        function Fibonacci(n) {
+           if(n == 0 || n == 1){
+               return 1
+           }
+            return Fibonacci(n-1) + Fibonacci(n-2)
+        }
+        
+        Fibonacci(5)
+    </script>
+
+    <script>
+        // ||的优先级高于 =
+        //(window.foo || window.foo = 'bar'); 这样写就报错
+        //（）的优先级高先看（）
+        (window.foo || (window.foo = 'bar'));
+        //问 window.foo的值  bar
+    </script>
+</body>
+</html>

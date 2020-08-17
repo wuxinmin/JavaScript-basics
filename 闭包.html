@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //这种函数是我们写代码的时候一种高触发率的东西所以很重要
+        function test () {
+            var arr = [];
+            for (var i = 0; i<10; i++) {
+                arr [i] = function () {  //这里执过程中只变 arr[i]中的i，后面其实是无动于衷 在执行完了才去找i
+                    console.log(i);    
+                }
+            }
+            return arr
+        }
+        var myArr = test();
+
+        for (var j = 0; j < 10; j++) {
+            myArr[j]();
+        }
+
+       // 结果 10个10
+
+
+       //解决办法  利用立即执行函数
+       function test () {
+            var arr = [];
+            for (var i = 0; i<10; i++) {
+                (function (j){
+                    arr[j] = function () {
+                        console.log(j); 
+                    }
+                }(i))
+            }
+            return arr
+        }
+        var myArr = test();
+
+        for (var j = 0; j < 10; j++) {
+            myArr[j]();
+        }
+    </script>
+</body>
+</html>

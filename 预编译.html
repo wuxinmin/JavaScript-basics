@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //预编译  发生在函数执行的前一刻   
+        /*  1.创建AO对象  Activation Object（执行期上下文）
+            2.找函数的形参和变量声明，将变量名和形参名作为AO对象的属性名，值位undefined
+            3.将实参和形参相统一
+            4.找函数体里面的函数声明，值赋予函数体
+
+            AO{
+                a: function a() {};  //重复挂一个、实参和形参相统一 undefined -> 1  ->function a() {} 
+                b: undefined;
+                d: function d() {}
+            }
+        */
+        function fn(a) {
+            console.log(a);  //去AO对象中找，正真的存储对象是AO（冰箱）function a() {};
+
+            var a = 123;     //去AO对象 a: function a() {} -> a = 123;
+
+            console.log(a);  // 123
+
+            function a() { }  //不用看 预编译已经执行
+
+            console.log(a);  //123
+
+            var b = function () { }  //去AO对象 undefined -> function () {}
+
+            console.log(b);
+
+            function d() { }
+        }
+        fn(1)
+    </script>
+</body>
+
+</html>
+
+<script>
+
+    // GO {
+    //     a: 10
+    //     test: fn....
+    //     c: 234
+    // }
+    function test() {
+        console.log(b);  //undefined
+        if (a) { //不执行
+            var b = 100;
+        }
+        console.log(b); //undefined
+        c = 234;  //碰瓷，放入全局
+        console.log(c); //AO找不到，去GO 234
+    }
+    var a;
+
+    // AO {
+    //     b: undefined
+    // }
+    test();
+    a = 10; //a->10
+    console.log(c);   //234
+</script>
+
+
+
+GO {
+a: 100
+demo: function(e){...}
+f: 123
+}
+
+AO {
+b: undefined
+c: function c(){}
+a: 10
+e: 2
+
+
+<!-- 判断if的a是先在函数内找找不到再去全局 -->
+}
+
+<!-- 类型转换 -->
+<script>
+    var str = false + 1;
+    console.log(str); //1
+    var demo = false == 1; //判断 false == 1是否等于1 将结果返回
+    console.log(demo); // false
+    if (typeof (a) && - true + (+undefined) + "") {
+        //typeof(a)-> "undefined" 
+        // -true -> -1
+        //+undefined ->NaN + "" -> "NaN"
+        //"NaN" 与 "undefined" 可以通过
+        console.log('基础扎实'); //基础扎实
+    }
+    if (11 + "11" * 2 == 33) {
+        console.log('基础扎实');
+        // ++先Number（）然后++
+        // + /-一元正负转换为数字类型
+        // + 两边有一个是字符串就string（）
+        // * 两边都Number（）
+    }
+    !!" " + !!"" - !!false || console.log('你觉得能打印你就是猪');
+    //!!就是转化为Boolean
+    //true + false - false || "你觉得能打印你就是猪"
+    // 1 || "你觉得能打印你就是猪"  前面是1就停不往后看了
+</script>
+
+<script>
+    var x = 1;
+    if(function f() {}) {
+        x += typeofO(f);
+    }
+    console.log(x); //1Object
+    
+
+    // GO {
+    //     x: 1;
+    //     f: function f() {};
+    // }
+</script>

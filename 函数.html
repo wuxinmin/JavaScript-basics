@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //高内聚 低耦合
+
+        //耦合程度高
+        if(3 > 0) {
+            // document.write("a");
+            // document.write("b");
+            // document.write("c");
+            test();
+        }
+        if(1 > 0) {
+            // document.write("a");
+            // document.write("b");
+            // document.write("c");
+            test();
+
+        }
+        if(2 > 0) {
+            // document.write("a");
+            // document.write("b");
+            // document.write("c");
+            test();
+
+        }
+
+        /*  函数：1.简化代码
+
+
+            命名规范：多单词拼接的话需要驼峰式
+        */
+        //函数声明  
+      /*   function test() {
+            document.write("a");
+            document.write("b");
+            document.write("c");
+        }
+
+        //命名函数表达式
+        var test = function test() {
+
+        }
+        //匿名函数表达式 ------> 常用 就简化为函数表达式
+        var dome = function () {
+
+        } */
+
+
+        //参数        形参
+        /* function test(a,b) {
+            //上面的a，b就相当于
+            //var a;
+            //var b;
+
+
+            // 注意： 这里面有个arguments 是实参列表 [1,8]
+            var c = a + b;
+            console.log(c);
+        }
+        //实参
+        test(1,8);  */ 
+
+
+        function sum(a,b) {
+            // arguments[2,3]
+            //var a = 2,
+            //var b = 3
+            a = 3;
+            console.log(arguments[0]);  //变成3了
+            arguments[0] = 5;
+            console.log(arguments[0]);  //变成5了
+
+            // ***agruments与a他们存在映射关系，但不是同一个变量，注意实参列表出生的时候有几个他就有几个
+            
+            
+        }
+        sum(2,3);
+
+
+        //函数的结束条件加返回值  return
+        function test(a, b) {
+
+            //return 1.终止函数
+            console.log('a');
+            return;           // 只打印 a
+            console.log('b');    
+            
+        }
+        test(1, 2)
+
+
+        // 2.返回值
+        function re() {
+            return 123;
+        }
+        var re = re();  //123  返回值的根本含义
+    </script>
+</body>
+</html>
