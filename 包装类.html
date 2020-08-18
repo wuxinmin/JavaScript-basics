@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //包装类   隐式的中间过程就是包装类
+        var num = 4;
+        num.len = 3;  //本来原始值不能有len
+        //隐式 new Number(4).len = 3;  delete
+
+        //隐式 new Number(4).len
+        console.log(num.len);//undefined
+        
+    </script>
+    <script>
+        var str = "abc";
+        str += 1;
+        var test = typeof(str);
+        if(test.length == 6) {
+            test.sign = "typeof的返回结果可能式String";
+            //new String(test).sign = "xxxx"  delete
+        }
+
+        //new String(test).sign   undefined
+        console.log(test.sign); //undefined
+        
+    </script>
+</body>
+</html>

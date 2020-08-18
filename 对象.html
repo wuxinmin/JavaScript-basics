@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //对象的创建方法
+        //1.var obj = {}  plainObject  对象字面量/对象直接量
+        //2.构造函数
+        //    1）系统自带的构造函数 new Object()
+        //    2) 自定义
+        // var obj = new Object(); //Object是系统自带的
+        // var obj = {};   //这两种事一样的
+        function Car (color) {  //构造函数，注意构造函数命名的时候需要首字母大写，大驼峰式
+            this.color = color;
+            this.name = "BMW"; //自定义属性
+            this.height = "1400";
+            this.lang = "4900";
+            this.weight = 1000;
+            this.health = 100;
+            this.run = function () {
+                this.health --;
+            }
+        }
+        var car = new Car();   //有New就会生成对象
+        var car1 = new Car();
+        //各自修改各自的属性
+        car.name = "玛莎拉蒂";  
+        car1.name = "保时捷";
+
+
+        var mrDeng = {
+            //属性
+            name: "MrDeng",
+            age: "40",
+            sex: "male",
+            health: 100,
+            //方法
+            smoke : function() {
+                console.log('i am smoking!!!');
+                mrDeng.health --;
+            },
+            drink: function() {
+                console.log('i am drinking');
+                this.health ++;  //这里的this就是第一人称指代 meDeng
+            }
+        }
+        //增加属性
+        mrDeng.wife = "xiaoliu"
+        //查看属性
+        console.log(mrDeng.sex);
+        //修改属性
+        mrDeng.sex = "female"
+        //删除属性  操作符 delete
+        delete mrDeng.sex
+
+        //如果没有这个属性控制台输出 undefined
+    </script>
+<!-- 例子 -->
+    <script>
+        var deng = {
+            prepareWife: "xiaowang",
+            name: "laodeng",
+            gf: "xiaoliu",
+            wife: "",
+            divorce: function() {
+                delete this.wife;
+                this.gf = this.prepareWife;
+            },
+            getMarried: function() {
+                this.wife = this.gf;
+            },
+            changePrepareWife: function(someone){
+                this.prepareWife = someone;
+            }
+        }
+        deng.getMarried();
+        console.log(deng.wife);  //xiaoliu
+        deng.divorce();
+        console.log(deng.wife); //undefined
+        console.log(deng.gf); //xiaowang
+        deng.getMarried();
+        console.log(deng.wife); //xiaowang
+        deng.changePrepareWife("xiaoma");
+        console.log(deng.prepareWife); //xiaoma
+        deng.divorce();
+        console.log(deng.wife); //undefined
+        console.log(deng.gf); //xiaoma
+        deng.getMarried();
+        console.log(deng.wife);//xiaoma
+        
+        
+    </script>
+</body>
+</html>

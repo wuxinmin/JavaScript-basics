@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //构造函数
+        //    1）系统自带的构造函数 new Object()
+        //    2) 自定义
+        // var obj = new Object(); //Object是系统自带的
+        // var obj = {};   //这两种事一样的
+        function Car (color) {  //构造函数，注意构造函数命名的时候需要首字母大写，大驼峰式
+            this.color = color;
+            this.name = "BMW"; //自定义属性
+            this.height = "1400";
+            this.lang = "4900";
+            this.weight = 1000;
+            this.health = 100;
+            this.run = function () {
+                this.health --;
+            }
+        }
+        var car = new Car();   //有New就会生成对象
+        var car1 = new Car();
+        //各自修改各自的属性
+        car.name = "玛莎拉蒂";  
+        car1.name = "保时捷";
+    </script>
+    <script>
+        /* new 之后会隐式的创建一个this空对象，以及在最后return this； */
+        function Student (name, age, sex) {
+            //var this = {}; 
+            //    AO { 
+            //      this: { 
+            //          name: "zhangsan" 
+            //          age:
+            //      } 
+            //  }
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+
+            return 123; //有 new就不会返回原始值，会强制返回this这个对象（冷门知识）
+            //return this;
+        }
+        var student = new Student("zhangsan","lisi","wangwu");
+    </script>
+</body>
+</html>

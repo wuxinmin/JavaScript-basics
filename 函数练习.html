@@ -92,5 +92,43 @@
         (window.foo || (window.foo = 'bar'));
         //问 window.foo的值  bar
     </script>
+
+
+    <script>
+        var x = 1, y = z = 0;
+        function add(n) {
+            return n = n + 1;
+        }
+        y = add(x);
+        function add(n){
+            return n = n + 3;
+        } 
+
+        //  求 x  y  z  值  1  4  4   
+    </script>
+
+    <script>
+        
+        var strLength = function (str) {
+            // var count = 0;
+            // for (var i = 0; i < str.length; i++){
+            //     if(str.charCodeAt(i) <= 255){
+            //         count ++;
+                    
+            //     }else if(str.charCodeAt(i) > 255){
+            //         count += 2;
+            //     }
+            // }
+            var count = str.length;
+            for (var i = 0; i < str.length; i++){
+            if(str.charCodeAt(i) > 255){
+                    count ++;
+                }
+            }
+            // console.log(count);
+            return count
+        }
+       
+    </script>
 </body>
 </html>

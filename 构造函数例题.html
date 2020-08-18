@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function employee(name, code) {
+            this.name = "wnagli";  //此处就没有参数根本传不进来，写死的
+            this.code = "A001";
+        }
+        var newemp = new employee("zhnagming", "A002");
+        console.log(newemp.name); //wangli
+        console.log(newemp.code); //A001
+        
+    </script>
+    <!-- 闭包 构造函数问题，这就是构造函数形成的闭包,隐式 return this -->
+    <script>
+        function Person(name, age, sex) {
+            var a = 0;
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            function sss() {
+                a ++;
+                console.log(a);
+                
+            }
+            this.say = sss;
+        }
+        var oPerson = new Person();
+        oPerson.say();  // 1
+        oPerson.say();  // 2
+        var oPerson1 = new Person();  //重新形成一个新的构造函数
+        oPerson1.say();  // 1
+    </script>
+</body>
+</html>
