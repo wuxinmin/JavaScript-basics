@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组枚举  遍历 enumeration
+        var arr = [1,2,3,4,5,6,7];
+        for(var i = 0; i < arr.length; i ++){
+            console.log(arr[i]);
+        }
+
+
+        //对象枚举
+        var obj = {
+            name: "vinklh",
+            age: 123,
+            sex: "male",
+            height: 180,
+            weight: 75
+        }
+        //对象的length不知道，怎么办，利用 for in循环
+
+        for(var prop in obj){  //系统会把属性名传到prop中然后遍历
+            // console.log(prop + " " +typeof(prop)); //全是 字符串类型
+            //console.log(obj.prop); //5个undefined  ？？？为什么
+            /* obj.name ------> obj["name"] */
+            //他就相当于 obj["prop"]  系统就会找prop属性，不会把prop当作变量
+            
+            console.log(obj[prop]);//只能这么写         
+        }
+    </script>
+
+   <!-- 1. hasOwnProperty() 操作符 -->
+    <script>
+          var obj = {
+            name: "vinklh",
+            age: 123,
+            sex: "male",
+            height: 180,
+            weight: 75,
+            /* 注意：@@@ 手动设置的都会打印，系统自带的不会打印 */
+            __proto__: {
+                lastName: "deng",  //检查后可以遍历出来原型的东西，解决hasOwnProperty()
+                __proto__: Object.prototype
+            }
+        }
+
+        for(var prop in obj){  //系统会把属性名传到prop中然后遍历
+            if(obj.hasOwnProperty(prop)) {//这样判断后就不会打印出原型，就是判断是不是自己的，
+                console.log(obj[prop]);//只能这么写         
+
+            }
+        }
+    </script>
+    <!-- 2. in 操作符 低概率使用-->
+    <script>
+        var obj = {
+            name: "vinklh",
+            age: 123,
+            sex: "male",
+            height: 180,
+            weight: 75,
+            /* 注意：@@@ 手动设置的都会打印，系统自带的不会打印 */
+            __proto__: {
+                lastName: "deng",  //检查后可以遍历出来原型的东西，解决hasOwnProperty()
+                __proto__: Object.prototype
+            }
+        }
+        console.log("height" in obj); //ture  这里一定注意in之前是字符串也就是属性，而不是变量，变量不带字符串
+        console.log('lastName' in obj); //true  他也能访问到父级，也就是他只管能不能使用到这个属性
+        
+    </script>
+    <!-- 3. instanceof -->
+    <!-- A对象 instanceof B  A是不是B构造函数构造出来的 -->
+    <!--@@@ A instanceof  B 看A对象的原型链上 有没有 B的原型 -->
+    <script>
+        var Person = function() {};
+        var person = new Person();
+        console.log(person instanceof Person);  //true
+        console.log(person instanceof Object);  //true  原型最顶端
+        
+
+        //它解决了一个难题 区别对象还是数组  
+        var arr = [] || {};
+        //1.
+        [].constructor  //Array() {}
+        var obj = {};
+        obj.constructor  //object() {}
+
+        //2.
+        // [] instanceof Array //ture
+        // obj instanceof Array //false
+
+        //3. tostring
+        Object.prototype.toString.call([]);
+        Object.prototype.toString.call(123);
+        Object.prototype.toString.call({});
+
+        console.log(Object.prototype.toString.call([])); //[object Array]
+        console.log(Object.prototype.toString.call(123));//[object Number]
+        console.log(Object.prototype.toString.call({}));//[object Object]
+
+
+        // Object.prototype.toString = function() {
+        //     // 识别 this
+        //     // 返回相应结果
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var deng = {
+            smoke: function() {
+                console.log("Somking,...coll!!");
+                // return undefined;
+                return this;
+            },
+            drink: function() {
+                console.log("dinking...coll !!!!!");
+                return this;
+            },
+            perm: function() {
+                console.log("perming....xuan coll !!!!!");
+                return this;
+            }
+        }
+        // deng.smoke().drink()  //报错
+
+
+        // return this 之后就可以连续调用 这就是jQuery的原理
+        deng.smoke().drink().perm();
+    </script>
+
+
+<script>
+    // obj.name ----> obj['name']
+
+    var deng = {
+        wife1: {name: "xiaoliu"},
+        wife2: {name: "xiaoniu"},
+        wife3: {name: "xiaowang"},
+        wife4: {name: "xiaozhang"},
+        wife5: {name: "xiaozheng"},
+        sayWife: function (num) {
+            return (this["wife" + num]);
+        }
+    }
+</script>
+</body>
+</html>

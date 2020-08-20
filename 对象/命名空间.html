@@ -6,6 +6,55 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        //命名空间, 防止冲突，以前的剞劂办法
+        var org = {
+            department1: {
+            jichneg: {
+                name: "zcc",
+                age: 123
+            },
+            xuming: {
+
+            }
+        },
+        department2: {
+            zhangsan:{},
+            lisi:{}
+        }
+        }
+        //引用
+        // org.department1.jichneg.name  //太长不方便
+        var jicheng = org.department1.jicheng;
+        jicheng.name;
+        
+    </script>
+
+    <script>
+        var name = "bcd"
+        var init = (function() {
+            var name = "abc";
+            function callName() {
+                console.log(name); 
+                
+            }
+            return function() {
+                callName();
+            }
+        }())
+        init();  //打印输出结果 abc
+
+        var initDeng = (function () {
+            var name = "123";
+            function callName() {
+                console.log(name);
+                
+            }
+            return function() {
+                callName();
+            }
+        }())
+        initDeng();  //打印结果为123  他们各自实现各自的功能，互补影响
+    </script>
 </body>
 </html>
