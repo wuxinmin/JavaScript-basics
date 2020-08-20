@@ -44,5 +44,31 @@
             myArr[j]();
         }
     </script>
+
+    <!-- 3.可以实现分装，属性私有化 -->
+    <script>
+        function Deng(name, wife) {
+            var prepareWife = "xiaozhang";  //私有化变量
+            this.name = name;
+            this.wife = wife;
+            this.divorce = function () {
+                this.wife = prepareWife;
+            }
+            this.changePrepareWife = function (target) {
+                prepareWife = target;
+            }
+            this.sayPrepareWife = function () {
+                console.log(prepareWife);
+            }
+        }    
+        var deng = new Deng();
+
+        console.log(deng.wife); //undefined
+        deng.divorce();
+        console.log(deng.wife);
+        deng.sayPrepareWife();
+        // console.log(deng.prepareWife);
+        
+    </script>
 </body>
 </html>

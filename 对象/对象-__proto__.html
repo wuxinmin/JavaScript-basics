@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Person.prototype.name = "abc"
+        function Person() {
+            //隐式
+            // var this = {
+            //     __proto__: Person.prototype
+            // }
+        }
+        var person = new Person();
+        console.log(person.name);//在自己身上没有找到就回去prototype上找
+        
+    </script>
+</body>
+</html>

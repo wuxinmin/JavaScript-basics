@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //除了原型链与this可以继承之外，随着JavaScript的发展出现了共享原型
+        Father.prototype.lastName = "deng"
+        function Father () {
+
+        }
+        function Son() {
+
+        }
+        Son.prototype = Father.prototype;  //公用一个原型, 也即是他们共用一个，缺点如果一个修改另一个也就会修改
+        var son = new Son();
+        console.log(son.lastName);  //deng
+        var father = new Father();
+        console.log(father.lastName);//deng
+        
+    </script>
+    <script>
+         Father.prototype.lastName = "deng"
+        function Father () {
+
+        }
+        function Son() {
+
+        }
+        function inherit(Target, Origin) {
+            Target.prototype = Origin.prototype;
+        }
+        inherit(Son, Father);
+        var son = new Son;
+        console.log(son.lastName); // deng
+        
+    </script>
+    <!-- 缺点如果一个修改另一个也就会修改 -->
+    <script>
+        //解决办法  (也就是圣杯模式)
+        //F是一个中间层，形成一个链式关系
+        function F() {}
+        F.prototype = Father.prototype; //F,Father共用一个原型
+        Son.prototype = new.F();  //son继承F
+    </script>
+    <!-- 继承的最终模式 -->
+    <script>
+        function inherit(Target, Origin) {
+            function F() {}
+            F.prototype = Origin.prototype;
+            Target.prototype = new F(); //前面这两句一定不能颠倒，new的时候已经用过了，再修改就没有意义了
+            Target.prototype.constuctor = Target; //指向自己
+            Target.prototype.uber = Origin.prototype; //uber超级， 最终指向的是Father
+        }
+        Father.prototype.lastName = "deng";
+        function Father() {}
+        function Son() {}
+        inherit(Son, Father);
+        var son = new Son();
+        var father = new Father();
+        console.log(son.lastName,father.lastName);//deng deng
+        
+        Son.prototype.sex = "male"
+        console.log(son.sex); //male
+        console.log(father.sex);  //undefined  解决了上面那个问题 
+    </script>
+    <!-- 优化，利用闭包第三点，将F定义为私有化变量 -->
+    <script>
+        var inherit = (function(){
+            var F = function() {};
+            return function(Target, Origin) {
+                F.prototype = Origin.prototype;
+            Target.prototype = new F(); //前面这两句一定不能颠倒，new的时候已经用过了，再修改就没有意义了
+            Target.prototype.constuctor = Target; //指向自己
+            Target.prototype.uber = Origin.prototype; //uber超级， 最终指向的是Father
+            }
+        }())
+        Father.prototype.lastName = "deng";
+        function Father() {}
+        function Son() {}
+        inherit(Son, Father);
+        var son = new Son();
+        var father = new Father();
+        console.log(son.lastName,father.lastName);//deng deng
+        
+        Son.prototype.sex = "male"
+        console.log(son.sex); //male
+        console.log(father.sex);  //undefined  解决了上面那个问题 
+    </script>
+</body>
+</html>

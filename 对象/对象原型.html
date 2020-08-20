@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Person.prototype  --原型
+        //Person.prototype = {}   是祖先
+        Person.prototype.name = "呵"
+        function Person () {
+            
+        }
+        var person = new Person();  //person 就会继承原型的name
+        var person = new Person();  //都可以继承name
+    </script>
+
+    <script>
+        // 原型的应用
+        //1.把共有的属性提取出来解决冗余
+        // Car.prototype.height = 1900;
+        // Car.prototype.lang = 4900;
+        // Car.prototype.carName = "BMW"
+        Car.prototype = {
+            height: 1400,
+            lang: 4900, 
+            carName: "BMW"
+        }
+        function Car (color, owner) { 
+            /* 这样写就会有代码的耦合冗余 */
+            this.owner = owner;
+            // this.carName = "NMW";
+            // this.height  = 1900;
+            // this.lang = 4900;
+            this.color = color; 
+        } 
+        var car = new Car("red","姬成");
+    </script>
+
+    <script>
+        //原型的增删改查
+        Person.prototype.lastName = "邓"
+        function Person() {
+            this.name = name;
+
+        }
+        var person = new Person("旭明");
+        //通过对象（后代）不会修改、删除原型（祖先）当然增加就更不可能了，修改的话只会添加到自身
+    </script>
+
+    <script>
+        Person.prototype.name = "sunny";
+        // Person.prototype = {  //上面那个就相当于此处这个
+        //     name: 'sunny'
+        // }
+        function Person() {
+            // var this = {
+            //     __proto__: Person.prototype
+            // }
+        }
+        var person = new Person();
+
+        // Person.prototype = "tony"
+        // console.log(person.name);  //tony
+
+        //但如果这样
+        Person.prototype = {  //  爷要换空间了
+            name: "cherry"
+        }
+        console.log(person.name);  //sunny
+
+
+
+    //     var obj = { name: "a"};
+    //     var obj1 = obj;
+    //     obj = {name: "b"} 
+    //     obj1.name  //a
+
+
+    
+    //如果写到下面呢
+
+    Person.prototype.name = "sunny";
+        // Person.prototype = {  //上面那个就相当于此处这个
+        //     name: 'sunny'
+        // }
+        function Person() {
+            // var this = {
+            //     __proto__: Person.prototype
+            // }
+        }
+        
+        Person.prototype = {  
+            name: "cherry"
+        }
+        var person = new Person();
+        console.log(person.name);  //cherry
+    </script>
+</body>
+</html>

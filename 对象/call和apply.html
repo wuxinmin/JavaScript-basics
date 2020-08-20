@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- call -->
+    <script>
+        function Person(name, age) {
+            //就相当于 this == obj
+            this.name = name;
+            this.age = age;
+        }
+        var person = new Person("deng", 100);
+        var obj = {
+
+        }
+        Person.call(obj, "wu", 300);//这时候Person里的this就指的是obj
+
+
+        // function test() {
+
+        // }
+        // test(); ----> 就是test.call();
+    </script>
+
+    <script>
+        function Person(name, age, sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        function Student(name, age, sex, tel, grade) {
+            //var this = {}
+            Person.call(this, name, age, sex);
+            this.tel = tel;
+            this.grade = grade;
+        }
+        var student = new Student();
+    </script>
+
+
+    <!-- apply 与call相比apply只能传一个实参，数组形式，也就是形参列表 -->
+    <script>
+
+    </script>
+</body>
+</html>
