@@ -70,5 +70,32 @@
         // console.log(deng.prepareWife);
         
     </script>
+    <!--4 模块化开发，防止污染全局 -->
+    <script>
+        var name = "bcd"
+        var init = (function() {
+            var name = "abc";
+            function callName() {
+                console.log(name); 
+                
+            }
+            return function() {
+                callName();
+            }
+        }())
+        init();  //打印输出结果 abc
+
+        var initDeng = (function () {
+            var name = "123";
+            function callName() {
+                console.log(name);
+                
+            }
+            return function() {
+                callName();
+            }
+        }())
+        initDeng();  //打印结果为123  他们各自实现各自的功能，互补影响
+    </script>
 </body>
 </html>
