@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- 
+    <script>
+        //数组自变量
+        var arr = [];
+        //构造方法定义数组
+        var arr = new Array();
+        //所以数组能用的一切放发都来自于
+        //Array.prototype
+        var arr = [1,2,3,4,5];
+        var arr = new Array(1,2,3,4)  //数组 1 2 3 4
+        var arr1 = new Array(10);  //10位空数组
+        var arr2 = [10];  //10
+        var arr3 = new Array(10.2) //报错length非法
+        var arr4 = [10.2] //数组第一个值 10.2
+    </script> -->
+    <script>
+        //es3.0 es5.0 es6.0
+        // ECMAScript DOM BOM 
+        // 1.改变原数组
+        // push方法 原型
+        // var arr = [];
+        //首先push方法在 Array.prototype这个下
+        // Array.prototype.push = function () {
+        //     for(var i = 0; i < arguments.length; i ++){
+        //         this[this.length] = arguments[i];
+        //     }
+        //     return this.length;
+        // }
+        //push 后面加
+        //pop 从最后一位去剪切
+        //unshift 在数组的前面加东西正好与pop相反
+        //shift 从数组的前面减
+        // reverse 逆转数组
+
+    var arr = [1,1,2,2,3,3]
+    // arr.splice(从第几位开始,截取多少的长度,在切口处添加新的数据(可以多个))
+    // console.log(arr.length);
+    
+    // arr.splice(1,2) 
+    console.log(arr.splice(1,2) ); //[1,2]
+    console.log(arr); //[1,2,3,3]
+    var arr1 = [1,2,3,4,5,6]
+    console.log(arr1.splice(2,2,1,1,1));
+    console.log(arr1);
+    
+    var arr2 = [1,2,3,4,5]
+    //如果给数组中间添加东西，当然也可以给数组最前面添加东西
+    arr2.splice(4,0,7)
+    console.log(arr2);//[1,2,3,4,7,5]
+    
+    //如果是负数就是倒数第几位
+    //实现方法
+    /* 
+        splice = function (pos) {
+            pos += pos > 0 ? 0 : this.length;
+        } 
+    */
+    </script>
+    <script>
+        ////排序方法加sort方法就是算法中的冒泡排序
+        //sort 排序
+        var arr = [1,3,0,-1,9,7]
+        console.log(arr.sort()); // [-1, 0, 1, 3, 7, 9]    升序
+        console.log(arr.sort().reverse());// [9, 7, 3, 1, 0, -1]  降序
+        var arr1 = [1,3,5,4,10]    
+        console.log(arr1.sort()); //[1, 10, 3, 4, 5]  根据ask码排的
+        
+        //1. 必须写两个型参
+        //2.看返回值 1) 当返回值是负数时那么前面的数放到前面
+        //           2) 当返回值是正数时那么后面的数放到前面
+        //           3）为0，不变
+        arr.sort(function (a,b){
+            // if(a > b){  //a < b 就是降序
+            //     return 1;
+            // }else {
+            //     return -1;
+            // }
+
+            // a - b > 0  return 返回一个大于0的数 a - b 就可以
+            // a - b < 0  return 返回一个小于0的数 a - b 就可以
+            return a - b ;//升序
+            return b - a; //降序
+        })
+    </script>
+
+    <!-- 例子 -->
+    <script>
+
+        //给一个有序数组，乱序
+        var arr = [1,2,3,4,5,6,7]
+        //Math.random()  // 产生随机数（0~1之间的开区间数）
+        Math.random() - 0.5 //就算可正可负的0-1之间的数，或者0.5 - Math.random() 也行
+        arr.sort(function() {
+            return (Math.random() - 0.5)
+        })
+       
+    </script>
+    <script>
+        //按年龄排序
+        var wu = {
+            name: "wu",
+            age: 18,
+            sex: "male",
+            face: "handsome"
+        }
+        var zhang = {
+            name: "zhang",
+            age: 19,
+            sex: "male",
+            face: "handsome"
+        }
+        var niu = {
+            name: "niu",
+            age: 20,
+            sex: "female",
+            face: "handsome"
+        }
+        var arr = [wu, zhang, niu]
+        //要求 年龄排序
+        arr.sort(function(a, b) {
+            // if(a.age > b.age){
+            //     return 1
+            // }else{
+            //     return -1
+            // }
+            return a.age - b.age
+        })
+        console.log(arr);
+        
+    </script>
+    <script>
+        //按照字符串长度排序
+        var arr = ['abc', 'cd', 'cccc', 'ddddd',"yuigiuov", "dvbdfbbvv","a"]
+        arr.sort(function(a,b){
+            return a.length - b.length
+        })
+        console.log(arr);
+        
+    </script>
+    <script>
+        //判断字符串长度
+        function retBytes(str) {
+            var num = str.length;
+            for(var i = 0; i < str.length; i ++){
+                if(str.charCodeAt(i) > 255){
+                    num ++;
+                }
+            }
+            return num;
+        }
+        var arr = ['邓', 'lao邓', 'deng自','sa客户高层该','hello']
+        arr.sort((a,b) =>{
+            return retBytes(a) - retBytes(b)
+        })
+        console.log(arr);
+    </script>
+    <!-- 不改变原数组 -->
+    <script>
+        //concat将数组连接起来原数组不变
+        var arr = [1, 2, 3, 4, 5, 6]
+        var arr1 = [6, 7, 8, 9]
+        console.log(arr.concat(arr1)); //[1, 2, 3, 4, 5, 6, 6, 7, 8, 9]
+        console.log(arr); //[1, 2, 3, 4, 5, 6] 原数组没有变
+        console.log(arr1);//[6, 7, 8, 9]
+        
+    </script>
+    <script>
+        // toString将数组转化成字符串
+    </script>
+    <script>
+         var arr = [1, 2, 3, 4, 5, 6]
+        //两个参数 slice(从该位开始截取，截取到该位)  不改变原数组
+        //一个参数  slice(从这里开始截取一直截取到结束)
+        console.log("slice");
+        console.log(arr.slice(2,5)); //[3, 4, 5]
+        console.log(arr.slice(1)); //[2, 3, 4, 5, 6]
+        console.log(arr.slice(-4)); //倒数第四位[3, 4, 5, 6]
+        console.log(); //不写就是整个截取
+               
+        console.log(arr); //   [1, 2, 3, 4, 5, 6]
+    </script>
+    <script>
+        var arr = [1,2,3,4,5,6];
+        console.log("join");         
+        console.log(arr.join("-")); //会把数组的每一位连接起来 1-2-3-4-5-6
+        console.log(arr.join("-").split("-")); //把字符串按照 - 拆分成数组  ["1", "2", "3", "4", "5", "6"]
+        console.log(arr); //当然原数组不变        
+    </script>
+    <!-- 例子 -->
+    <script>
+        //把这些字符串都给拼接到一起
+        var str = 'alibaba';
+        var str1 = '百度';
+        var str2 = 'toutiao';
+        var str3 = 'tencent';
+        var str4 = 'wangyi';
+        var str5 = "xiaoang";
+        var str6 = "xiaoniu";
+        var arr = [str,str1,str2,str3,str4,str5,str6]
+        console.log(arr);
+        console.log(arr.join(''));  //alibaba百度toutiaotencentwangyixiaoangxiaoniu
+        //传空字符串，不传就会按照 ，连接
+        console.log(arr.join()); // alibaba,百度,toutiao,tencent,wangyi,xiaoang,xiaoniu
+    
+    </script>
+    <script>
+        //类数组
+        function test() {
+            console.log(arguments); //[1, 2, 3, 4, 5, 6, 7, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+             //但是push不进去 它是一个类数组
+        }
+        test(1,2,3,4,5,6,7)
+    </script>
+    <script>
+        var obj = {
+            "0" : 'a',
+            "1" : 'b',
+            "2" : 'c',
+            "length" : 3,
+            "push" : Array.prototype.push,
+            "splice" : Array.prototype.splice //给对象加上splice之后对象和数组就长得一样了
+        }
+        obj.push("d")
+        // console.log(obj); //没有加splice之前 {0: "a", 1: "b", 2: "c", 3: "d", length: 4, push: ƒ}
+        console.log(obj); // ["a", "b", "c", "d"]
+        
+        //这就是一个类数字，一般对象不能这样这是属于数组的属性  
+        //类数组必须写length属性
+        //它既可以当数组也可以当对象使用
+        //属性要为索引（数字）属性，必须有length属性，最好加上push  
+        Array.prototype.push = function (target) {
+            obj[obj.length] = target;
+            obj.length ++;
+        }
+    </script>
+    <script>
+       //分装type
+       /* typeof([]) --Array
+       typeof({}) --Object
+       typeof(function) --Object
+       typeof(new Number()) --number Object
+       typeof(123) ---number */
+
+       //这就是一个工具方法   判断哪种类型的
+       function type(target) {
+           var template = {
+               "[object Array]" : "array",
+               "[object Object]" : "object",
+               "[object Number]" : "number-ojbect",
+               "[object Boolean]" : "boolean-object",
+               "[object String]" : "string-object"
+           }
+        //1. 分两类 原始值 引用值
+        //2. 区分引用值
+        //首先判断null
+        if(target == null) {
+            return "null"
+        }
+        if(typeof(target) == "function"){
+            return "function";
+        }else if(typeof(target) == "object"){
+            //数组
+            //对象
+            //包装类
+            //怎样判断  Object.prototype.toString
+            var str = Object.prototype.toString.call(target); //得出上面几种结果
+            return template[str];
+        }else{
+            return typeof(target); //原始值
+        }
+       }
+    </script>
+</body>
+</html>

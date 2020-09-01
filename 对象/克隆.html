@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--浅层克隆  克隆完修改obj的内容obj1不会改变 -->
+    <script>
+        var obj = {
+            name: "abc",
+            age: 123,
+            sex: "female",
+            card: ['visa', 'unionpay', [1, 2]]
+        }
+        var obj1 = {}
+
+        function clone(origin, target) {
+            var target = target || {};
+            for (var prop in origin) {  //for in循环
+                target[prop] = origin[prop]
+            }
+        }
+        clone(obj, obj1);
+    </script>
+    <!-- 深度拷贝 -->
+    <script>
+        var obj = {
+            name: "abc",
+            age: 123,
+            sex: "female",
+            card: ['visa', 'unionpay'],
+            wife: {
+                name: "xiaoliu",
+                son: {
+                    name: "xiaoniu"
+                }
+            }
+        }
+        var obj1 = {}
+        // var obj1 = {
+        //     name: "abc",
+        //     age: 123,
+        //     sex: "female",
+        //     card: [
+        //         "visa",
+        //         "unionpay"
+        //     ],
+        //     wife: {
+        //         name: "xiaoliu",
+        //         son: {
+        //             name: "xiaoniu"
+        //         }
+        //     }
+        // }
+        /* 
+            1.判断是不是原始值  typeof()  ---> object
+            2.如果是引用值，判断是对象还是数组   instanceof  toString  constructor
+            3.建立相应新的对象和数组
+         */
+
+         //遍历对象 （for(pron in )循环）
+         
+        function deepClone(origin, target) {
+            var target = target || {}, //
+                toStr = Object.prototype.toString, //为了方便后续引用
+                arrStr = "[object, Array]";
+            for(var prop in origin){
+                if(origin.hasOwnProperty(prop)) {  //防止克隆其原型链属性
+                    if(origin[prop] !=="null" && typeof(origin[prop]) == "object") {
+
+                        // if(toStr.call(origin[prop]) == arrStr){
+                        //     target[prop] = [];
+                        // }else{
+                        //     target[prop] = {};
+                        // }
+
+                        target[prop] =  (toStr.call(origin[prop]) == arrStr) ?  [] :  {};
+                        deepClone(origin[prop], target[prop]);
+                    }else{
+                        target[prop] = origin[prop];
+                    }
+                }
+            }
+            return target
+        }
+    </script>
+    <script>
+        //三目运算符
+        // 条件判断? 是 : 否  并且会返回
+        var num = 1 > 0 ? 2 + 2 : 1+1;
+        console.log(num); // 4
+        
+        var a = 1 > 0 ? ("10" > 9 ? 1 : 0) : 2; // 1
+        var a = 1 > 0 ? ("10" > "9" ? 1 : 0) : 2; // 0  //字符串相比的是逐位的ask码
+
+        
+    </script>
+</body>
+
+</html>

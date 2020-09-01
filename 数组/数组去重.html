@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [111,22,33]
+    </script>
+    <script>
+        //数组去重
+        var arr = [1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,0,0];
+        //利用对象特性同一个属性名不可能出现两次，把数组的第一位当作属性名填进去，这样的方式就叫哈希hash
+        // var obj = {
+        //     "1" : "abc",
+        //     "2" : "abc",
+        //     "3" : "abc"
+        // }
+        // obj[1] --> 'abc'
+        Array.prototype.unique = function() {
+            var temp = {},
+                arr = [],
+                len = this.length;
+            for(var i = 0; i < len; i++) { 
+            //这里没有arr 所以谁调用就指向谁，故用this，而且最好提取出去，因为每一圈循环哦都需要，计算机还要去计算
+                if(!temp[this[i]]){ //取到undefined说明没有重复
+                    temp[this[i]] = "abc";
+                    arr.push(this[i]);
+                }
+            }
+            return arr
+        } 
+        //在原型链上就可以直接这样调用
+        console.log(arr.unique());
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .txt{
+            background-color: aqua;
+            width: 300px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="txt">
+        一切不过如此
+    </div>
+    <script>
+        function foo () {//实参12345  也就是arguments
+            bar.apply(null, arguments);
+            //没有涉及this指向，就相当于
+            //bar(arguments)
+        }
+        function bar() {
+            console.log(arguments);    //输出12345        
+        }
+        foo(1,2,3,4,5)
+    </script>
+
+    <script>
+        /* ,号操作符（1，2）看完前面的，然后看后面的，把后面的返回（一定要有括号） */
+        var f  = (
+            function f() {
+                return "1"
+            },  //这里不写，号就不符合语法
+            function g() {
+                return 2
+            }  //, 号操作符会把后面的返回  之后就变成立即执行函数
+        )()
+        typeof f; //number
+    </script>
+</body>
+
+<script>
+    var x = 1;
+    if(function () {}) {  //这里()运算符就会将里面的东西转化为表达式，结果一定为true，立即执行（）里面的，执行完就找不到了
+        x += typeof f;  //这时候f就已经不在了
+    }
+    console.log(x); //1undefined
+    
+</script>
+<script>
+    function print() {
+        var marty = {
+            name: "marty",
+            printName: function() {console.log(this.name);}
+        }
+        var test1 = {name:"test1"};
+        var test2 = {name:"test2"};
+        var test3 = {name: "test3"};
+        test3.printName = marty.printName;
+        //bind()方法会创建一个新的函数，称为绑定函数,fun方法在this环境下调用
+        //该方法可传入两个参数，第一个参数作为this，第二个及以后的参数则作为函数的参数调用
+        var printName2 = marty.printName.bind({name:123});
+        marty.printName.call(test1);  //call改变this指向  输出：test1
+        marty.printName.apply(test2); //apply改变this指向  输出：test2
+        marty.printName();  //marty
+        printName2(); //123
+        //谁调用指向谁
+        test3.printName(); //test3
+    }
+    print();
+</script>
+
+<script>
+    var bar = {a: "022"};//a bar
+    function print() {
+        bar.a = "a"; //让外面的bar 为 a
+        Object.prototype.b = "b";
+        return function inner() {
+            console.log(bar.a);  //a
+            console.log(bar.b);  //b
+        }
+    }
+    print()();
+</script>
+</html>
