@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 包装类 -->
+    <script>
+        var str = "abc";
+        console.log(str.length);
+        // str本来是一个原始值，不是引用值，它不会有属性的，那么这是为什么呢
+        // 原始值确实是没有属性的，但想要通过原始值访问属性，
+        //JavaScript内部看如果是字符串类型就会new String('abc');原始值就会包装成类
+        //所以执行str.length就是执行new String('abc').length
+
+        //new Number() 会直接返回一个值
+
+        var num = 123;
+        num.abc = 'abc';
+        //new Number(num).abc = 'abc'; --->delete 销毁
+        //
+        //new Number(num).abc
+        console.log(num.abc); //undefined
+
+    </script>
+    <script>
+        Person.prototype.lastName = 'deng';
+        function Person() {
+            //隐式三步  new 之后会隐式的创建一个this空对象，以及在最后return this
+            //在构造函数内部创建一个this 空对象，然后把this.xxx存入this对象中，最后return this出去。
+            // var this = {
+            //     __proto__: Person.prototype 
+            // } 
+        }
+        var Person = new Person();
+    </script>
+    <!-- Object.create()方法 -->
+    <script>
+        // Object.create() 可以创建一个对象，不过它创建的比较灵活
+        //里面可以填上它创造对象的原型，而且是必须要填
+        //Object.create()创建的对象需要指定对象的原型是谁
+        var demo = {
+            lastName = "邓"
+        }
+        var obj = Object.create(demo) //此时空对象的原型就是demo
+        //也就是，在自己身上找不到属性的时候就会到demo身上找
+        // obj = {
+        //     __proto__: demo
+        // }
+    </script>
+
+    <script>
+        var num = 123;
+        delete num; //false 不能删除
+
+        //一旦经历了var 的操作。所得出的属性，window，这种属性叫做不可配置性属性，
+        //不可配置性属性 delete不掉， delete删除掉的属性只能是可配置的
+
+        //什么是可配置的属性
+        var obj = {
+
+        }
+        obj.num = 234
+        console.log(delete obj.num);  //true 可以删除
+        // 当然如果给window直接赋值也是可以删除的，也属于可配置性属性
+    </script>
+    <!-- this问题 和call问题 -->
+    <script>
+        //this的4个特点
+        //1.预编译  this ----> window
+        //2.谁调用的  this就指向谁
+        //3.call apply
+        //4.全区this指向window
+
+        //1.预编译  this ----> window
+        function test() {
+            num: 123;
+            function a() { }
+        }
+        // test(); 它和不传值的this.call() 是一样的
+        test.call({ name: "deng" })  //此时this 就会变为 {name: "deng"})
+        // AO{
+        //     arguments: {}
+        //     // this: window
+        //     this: {name: "deng"})
+        //     num: undefined
+        //     a: function () {} 
+        // }
+
+        //2..谁调用的  this就指向谁
+        var name = "window"
+        var obj = {
+            name: "obj",
+            say: function () {
+                console.log(this.name) //obj  谁调用指向谁                           
+            }
+        }
+        obj.say(); // obj
+        obj.say.call(window); //window 这样的话 this就会指向window  call会改变this指向 
+
+        var fun = obj.say;
+        fun(); //此时打印 winodw
+
+
+    </script>
+    <script>
+        function Person (name, age) {
+            this.name = name,
+            this.age = age
+        }
+        function Student (name, age, sex) {
+            // var this = Object.create(Student.prototype)
+            Person.call(this, name, age)
+            this.sex = sex
+        }
+        var student = new Student("cheng", 18, "male");
+        console.log(student);
+        
+    </script>
+    <script>
+        //闭包  只要被保存到外面就可以，不一定非要return
+        var obj = {}
+        function a() {
+            function b() {
+
+            }
+            // return b
+            obj.fun = b; //也会形成闭包
+        }
+    </script>
+    <!-- 深度克隆 -->
+    <script>
+        var obj = {
+            name : "123",
+            card : ["班级", "姓名"]
+        }
+        var obj1 = {}
+        // 浅克隆 把obj全部遍历一遍放到obj1 利用for in
+        // 浅克隆的话如果出现引用值，他们会指向同一个空间，obj改obj1也要改  所以出现了深克隆
+        for (var prop in obj) { //这样就会把obj中的属性名拿出来
+            obj1[prop] = obj[prop]
+        }
+
+    </script>
+</body>
+
+</html>
