@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        try {
+            console.log("a");
+            console.log(c);  //原本遇到错误就停止执行但是在try中依然会报错但是不抛出错误，后面的c也依然执行不出来
+            console.log("b");//在try里面发生的错误虽然不会报错，但是不会执行错误以后的代码
+            
+        } catch (error) {
+            //系统会有一个error对象，如果报错会把error传过来供catch来使用
+            //如果try里面的代码不会报错catch里面的代码不会执行
+            //catch的作用就是把错误信息给捕捉到      
+            console.log(error.name + ":" + error.message);//ReferenceError:c is not defined
+                 
+        }
+        console.log("d"); //执行。。。后续代码任然可以执行
+        // Error.name的六种值对应的信息：
+        //1.EvalError：eval()的使用与定义不一致；
+        //2.RangeError：数值越界
+        //3.ReferenceError：非法或不能识别的引用数值  //有没有定义好
+        //4.SyntaxError：发生语法解析错误  //很多低级错误
+        //5.TypeError：操作数类型错误
+        //6.URIError：URI处理函数使用不当
+    </script>
+</body>
+</html>
