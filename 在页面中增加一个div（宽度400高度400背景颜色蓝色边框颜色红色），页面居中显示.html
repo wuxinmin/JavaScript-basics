@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .show{
+            width: 400px;
+            height: 400px;
+            background-color: blue;
+            border: red solid 2px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* margin-left: -200px;
+            margin-top: -200px; */
+            /* 通过变形来搞定 */
+            /* translate(x,y)水平方向和垂直方向同时移动（也就是X轴和Y轴同时移动） */
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="show"></div>
+</body>
+</html>

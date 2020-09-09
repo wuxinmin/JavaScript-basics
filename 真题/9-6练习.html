@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person (name, age, sex) {
+            var a = 0;
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            function sss() {
+                a ++;
+                document.write(a);
+            }
+            this.say = sss;
+        }
+        var oPerson = new Person();
+        //say方法和里面person形成闭包  new了就会隐式return this
+        oPerson.say(); // 1
+        oPerson.say(); // 2
+        var oPerson1 = new Person(); //重新执行person又会形成新的闭包
+        oPerson1.say(); // 1
+    </script>
+    <script>
+        //求输出结果
+        (function(x) {
+            //这里相当于var x var的东西删不了 所以x该是啥还是啥，delete只能删除可配置性的
+            delete x;  //delete操作符
+            return x;
+        })(1)
+    </script>
+    <script>
+        var num = 123;
+        delete num; //false 不能删除
+
+        //一旦经历了var 的操作。所得出的属性，window，这种属性叫做不可配置性属性，
+        //不可配置性属性 delete不掉， delete删除掉的属性只能是可配置的
+
+        //什么是可配置的属性
+        var obj = {
+
+        }
+        obj.num = 234
+        console.log(delete obj.num);  //true 可以删除
+        // 当然如果给window直接赋值也是可以删除的，也属于可配置性属性
+    </script>
+    <script>
+        //arguments是一个类数组 ，类数组就是对象
+        function test() {
+           console.log( typeof (arguments)); 
+        }
+        test()
+    </script>
+    <script>
+        var h = function a() {//写了表达式之后a就没有用了，a就会消失
+            return 23;
+        }
+        console.log(typeof a());//此处就执行不了  报错 a is not defined
+        
+    </script>
+    <script>
+        function retDate(date){
+            var arr = ['周一', '周二', '周三', '周四', '周五', '周六', '周天'];
+            var ret = arr[date - 1];
+            if(ret === undefined){
+                return 'error';
+            }else{
+                return ret;
+            }
+        }
+        console.log(retDate(6));       
+    </script>
+</body>
+</html>

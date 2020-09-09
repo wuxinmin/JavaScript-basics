@@ -133,7 +133,7 @@
             obj.fun = b; //也会形成闭包
         }
     </script>
-    <!-- 深度克隆 -->
+    <!-- 克隆 -->
     <script>
         var obj = {
             name : "123",
@@ -145,7 +145,92 @@
         for (var prop in obj) { //这样就会把obj中的属性名拿出来
             obj1[prop] = obj[prop]
         }
+    </script>
+    <!-- 所以出现深拷贝为了处理引用值  深度克隆 -->
+    <script>
+        //分析是引用值还是原始值
+        //如果是对象就再obj1新建一个对象出来，然后再看是引用值韩式原始值是原始值就直接拿出来
+        // var obj = {
+        //     name: "xiaoliu",
+        //     son: {
+        //         name: "xiaodeng"
+        //     }
+        // }
+        // var obj1 = {
+        //     //内部其实是这样拷贝的
+        //     name: obj.wife.name,
+        //     //但是引用值就不一样了
+        //     // son: obj.wife.son 这样过来就是一个地址（引用值）  所以新建对象
+        //     son: {
+        //         //再次判断里面的东西
+        //         name: obj.wife.son.name
+        //     }
+        // }
+        
+    </script>
+    <script>
+        var obj = {
+            name: "abc",
+            age: 123,
+            sex: "female",
+            card: ['visa', 'unionpay'],
+            wife: {
+                name: "xiaoliu",
+                son: {
+                    name: "xiaoniu"
+                }
+            }
+        }
+        var obj1 = {}
+        // var obj1 = {
+        //     name: "abc",
+        //     age: 123,
+        //     sex: "female",
+        //     card: [
+        //         "visa",
+        //         "unionpay"
+        //     ],
+        //     wife: {
+        //         name: "xiaoliu",
+        //         son: {
+        //             name: "xiaoniu"
+        //         }
+        //     }
+        // }
+        /* 
+            1.判断是不是原始值  typeof()  ---> object
+            2.如果是引用值，判断是对象还是数组   instanceof  toString  constructor
+            3.建立相应新的对象和数组
+         */
 
+         //遍历对象 （for(pron in )循环）
+         
+        function deepClone(origin, target) {
+            var target = target || {}, //
+                toStr = Object.prototype.toString, //为了方便后续引用
+                arrStr = "[object, Array]";
+            for(var prop in origin){
+                if(origin.hasOwnProperty(prop)) {  //防止克隆其原型链属性
+                    if(origin[prop] !=="null" && typeof(origin[prop]) == "object") {
+
+                        // if(toStr.call(origin[prop]) == arrStr){
+                        //     target[prop] = [];
+                        // }else{
+                        //     target[prop] = {};
+                        // }
+
+                        target[prop] =  (toStr.call(origin[prop]) == arrStr) ?  [] :  {};
+                        deepClone(origin[prop], target[prop]);
+                    }else{
+                        target[prop] = origin[prop];
+                    }
+                }
+            }
+            return target
+        }
+    </script>
+    <script>
+        // undefined null 规定就是不能和0比较
     </script>
 </body>
 
