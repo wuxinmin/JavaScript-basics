@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //dom是什么？？它就是想让js能操作html的一个编程接口，一个方法
+        var div = document.getElementsByTagName('div')[0]
+        //TagName标签名, 可以把所有标签名为div的选出来
+        //选出来之后封装到一个类数组里面，所有的div按照类数组的索引位进行排列,所以要拿到特定的div就需要选出来
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.backgroundColor = "red"; //js里面不能写-，就是用小驼峰式编写
+
+        //如果需要点击一次就变一次的话，怎么搞？？计数器 
+        var count = 0;
+        div.onclick = function () {
+            //点击来回变化，两次就模2，三次就模3
+            count++;
+            if (count % 3 == 1) {
+                this.style.backgroundColor = "green";
+                //this指向调用它的，这里就相当于 div.onclick()只是相当于
+                this.style.width = "200px";
+                this.style.height = "50px";
+                this.style.borderRadius = "50%"
+            } else if(count % 3 == 2){
+                this.style.width = "100px";
+                this.style.height = "100px";
+                this.style.backgroundColor = "red"; //js里面不能写-，就是用小驼峰式编写
+                this.style.borderRadius = "0"
+            }else{
+                this.style.backgroundColor = "blue"
+            }
+        }
+    </script>
+</body>
+
+</html>
