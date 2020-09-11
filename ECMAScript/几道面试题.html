@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(false == "0");  //true
+        console.log(false === "0"); //false 不会存在隐式类型转换  首先他们的类型就不一样一个Boolean一个字符串
+        // ==  === 比较运算符
+        // A == B 会存在隐式类型转换
+        /* 
+            ==
+            Number： 直接比较，注意NaN（非数）不等于任何数
+            String：先比长度然后比是否相同
+            Boolean： true false
+            undefined（未定义）null（占位符）//js规定 undefined = null
+
+            杂交：
+            Number 与 String 把字符串转化为数字，然后比较
+            Number 与 Boolean 把布尔值转化为数字然后比较
+            Boolean 与 String false(0) == "0"(0)，两边都转化为数字然后比较
+            @特殊@
+            undefined != 0  
+            null != 0
+
+            对于undefined 与 null 他两不等于其他任何东西除非他两自己
+         */
+        // A === B 不会存在隐式类型转换，先比较类型，然后在看是不是长得一样
+    </script>
+    <script>
+        console.log(0 || false); // false 第一个为假，第二个也为假，输出第二个
+        console.log(0 || 1);  // 0
+        console.log(1 || 2);  // 1 
+        console.log(0 && 1);  // 1
+        console.log(1 && 2);  // 2 第一个为真 第二个为真输出第二个
+
+
+        /* 
+            || 一真则真
+            && 一假则假
+            ！ 真假相对
+         */    
+    </script>
+</body>
+</html>

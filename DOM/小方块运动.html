@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button style="position: fixed;left: 500px;">加速</button>
+    <script>
+        var btn = document.getElementsByTagName('button')[0]
+        var div = document.createElement("div"); //在script中创建一个div
+        document.body.appendChild(div); //在body中插入div标签
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.background = "red";
+        div.style.position = "absolute";
+        div.style.left = "0px";
+        div.style.top = "0px";
+        //加速运动
+        /* var speed = 1;
+        var timer = setInterval(function(){
+            speed += speed/7
+            div.style.left = parseInt(div.style.left) + speed + "px"  //div.style.left返回的是一个字符串需要转化为数字
+            div.style.top = parseInt(div.style.top) + speed + "px"
+            if(parseInt(div.style.top) > 500 & parseInt(div.style.left) > 500){
+               clearInterval(timer) //清楚定时器
+            }
+        },50) */
+        var speed = 5;
+        btn.onclick = function() {
+            speed ++;
+        }
+        document.onkeydown = function(e) {
+            switch(e.which){
+                case 38:{
+                    div.style.top = parseInt(div.style.top) - speed + "px";
+                    break;
+                }
+                case 40:{
+                    div.style.top = parseInt(div.style.top) + speed + "px";
+                    break;
+                }
+                case 39:{
+                    div.style.left = parseInt(div.style.left) + speed + "px";
+                    break;
+                }
+                case 37:{
+                    div.style.left = parseInt(div.style.left) - speed + "px";
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
