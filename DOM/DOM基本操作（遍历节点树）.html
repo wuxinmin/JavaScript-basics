@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 下面这就属于一个节点树 -->
+    <div>
+        123
+        <!-- 注释节点 comment -->
+        <strong></strong>
+        <span></span>
+        <em></em>
+    </div>
+    <script>
+        //遍历节点树
+        var strong = document.getElementsByTagName("strong")[0]
+        var div = document.getElementsByTagName("div")[0] 
+        //parentNode 父节点 最顶端是document  一个元素一个父级
+        console.log(strong.parentNode); //div  
+        console.log(strong.parentNode.parentNode.parentNode.parentNode); //document   
+
+        // childNodes 子节点  文本节点加元素节点
+        console.log(div.childNodes);
+        //类数组[text, comment, text, strong, text, span, text, em, text]
+        console.log(div.firstChild);  //123 第一个节点
+        console.log(div.lastChild);  //text 最后一个节点
+
+        console.log(strong.nextSibling); // text strong的下一个兄弟节点
+        console.log(strong.previousSibling); //text strong的上一个兄弟节点
+        
+        console.log(strong.parentElement); //父元素节点 div
+        console.log(div.children); // [strong, span, em]
+        
+        console.log(div.childElementCount); //3 子元素节点个数 和 div.children.length一样
+        console.log(div.firstElementChild);//div下的第一个子元素标签
+        console.log(div.lastElementChild); //div下的最后一个子元素标签
+        console.log(div.nextElementSibling); //返回后一个兄弟元素
+        console.log(strong.previousElementSibling);  //返回前一个兄弟元素
+        
+        //nodeName 元素的标签名  只读
+        console.log(div.firstElementChild.nodeName); //STRONG
+        console.log(div.childNodes[1].nodeName);  //#comment
+        
+        //nodeValue 只有 text 和 comment节点有这个属性值 可读可写
+
+        //nodeType 最重要，该节点的类型
+
+
+        console.log(document.nodeType);  //9 document 节点
+        console.log(div.childNodes[1].nodeType); //8 注释节点
+        console.log(div.firstElementChild.nodeType);//1 元素节点
+        console.log(div.childNodes[0].nodeType); //3 文本接节点
+        
+    </script>
+</body>
+</html>

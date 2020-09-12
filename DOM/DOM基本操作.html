@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="only" class="demo"></div>
+    <input type="text" name="fruit"> -->
+    <div>
+        <strong>123</strong>
+    </div>
+    <div>
+        <p>
+            <strong>456</strong>
+        </p>
+    </div>
+    <!-- <script>
+        // document 
+        //单独写document它代表的就是整个文档 现在我们看到的能代表整个页面的市html标签，
+        //如果说给html标签要加一个标签那么就是document
+        // document真正代表的是整个文档3
+        // document.getElementsByTagName("div")[0] //把div选出来了可以放到js里面去操作
+    </script> -->
+    <script>
+        //下面就是documents的一些相关方法
+        // var div = document.getElementById("only");//一个，像getElementsByTagName带s的证明是拿出来一组
+        //注意：ie8以下的浏览器不区分id的大小写
+        var div = document.getElementsByTagName("div")[0]  //标签名，把标签名为div的全部拿出来（属于一组），属于类数组
+        var demo = document.getElementsByClassName("demo")[0];//是选择出来了但是不是所有浏览器都好使，ie8以及ie8以下的浏览器没有这个方法
+        var fruit = document.getElementsByName("fruit")[0];//根据数据名来选
+        
+        //缺点一：ie6 ie7 以下没有这两个方法
+        //缺点二：不是实时的，致命缺点  就相当于镜像
+        var play = document.querySelector("div > p > strong")
+        var play1 = document.querySelector("div > strong")
+        var play2 = document.querySelectorAll("div > p  strong") //数组
+    </script>
+</body>
+</html>
