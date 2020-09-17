@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>
+            <strong>
+                <i></i>
+            </strong>
+        </span>
+    </div>
+    <script>
+        function retparent(element,num) {
+            while(element & num){  //这里需要考虑到null时就应该停止不然会报错，element == null时 & 遇见假就返回
+                element = element.parentElement;
+                num --;
+            } 
+            return element;
+        }
+        var i = document.getElementsByTagName("i")[0]
+    </script>
+</body>
+</html>
