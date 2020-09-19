@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <!-- this is a comment -->
+        234
+        <strong></strong>
+        <span>
+            <p>
+                
+            </p>
+        </span>
+    </div>
+    <script>
+        Element.prototype.hasChildren = function() {
+            var children = this.childNodes;
+            var len = children.length;
+            for(var i = 0; i < len; i++){
+                if(children[i].nodeType == 1){
+                    return true;
+                }
+            }
+            return false;
+        }
+        var div = document.getElementsByTagName("div")[0]
+        var strong = document.getElementsByTagName('strong')[0]
+        console.log(div.hasChildren()); //true
+        console.log(strong.hasChildren()); //false
+        
+    </script>
+</body>
+</html>

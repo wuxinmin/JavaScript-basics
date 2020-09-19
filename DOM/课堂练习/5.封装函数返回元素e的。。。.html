@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 封装函数返回元素e的第n个兄弟元素节点，n为正返回后面的兄弟节点元素，n为负数返回前面的，n为0，返回自己 -->
+    <div>
+        <strong></strong>
+        <span></span>
+        <p></p>
+        <h1></h1>
+        <i></i>
+        <ul></ul>
+    </div>
+    <script>
+        function retSibling(e, n) {
+            while (e && n) {  //首先要有e有e之后再考虑其他的东西
+                if (n > 0) {
+                    if (0 && e.nextElementSibling) {
+                        e = e.nextElementSibling;
+                    } else {
+                        for (e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling) { }
+
+                    }
+                    n--;
+                }
+                if (n < 0) {
+                    if (0 && e.previousElementSibling) {
+                        e = e.previousElementSibling;
+                    } else {
+                        for (e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling) { }
+                    }
+
+                    n++;
+                }
+            }
+            return e;
+        }
+        var p = document.getElementsByTagName("p")[0];
+        console.log(retSibling(p, 10));
+
+    </script>
+</body>
+
+</html>

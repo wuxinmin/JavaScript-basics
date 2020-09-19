@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1></h1>
+        <!-- this is a comment -->
+        123
+        <span>
+            <strong>
+                <i></i>
+            </strong>
+            <h2></h2>
+        </span>
+    </div>
+    <script>
+        Element.prototype.myChildren = function () {
+            var child = this.childNodes;
+            var len = child.length;
+            var arr = [];
+            for(var i = 0; i < len; i++){
+                if(child[i].nodeType == 1){
+                    arr.push(child[i])
+                }
+            }
+            return arr
+        }
+        var div = document.getElementsByTagName("div")[0]
+        console.log(div.myChildren()); //[h1, span]
+        var span = document.getElementsByTagName("span")[0]
+        console.log(span.myChildren());//[strong, h2]
+        
+    </script>
+</body>
+
+</html>

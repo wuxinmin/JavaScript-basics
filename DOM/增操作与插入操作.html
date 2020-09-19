@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <script></script>
+    <style></style>
+</head>
+<body>
+    <div> 
+    </div>
+    <script>
+        
+        // var div = document.createElement('div') // 创建一个标签，也就是创建元素节点
+        // var text = document.createTextNode('邓哥') // 创建一个问本节点
+        // var comment = document.createComment('this is a comment')// 创建一个注释节点 
+        // document.body.appendChild(div) // 把创建好的标签加入页面
+        var div = document.getElementsByTagName('div')[0];
+        // var text = document.createTextNode('邓宝宝');
+        // var span = document.createElement('span');
+        // var text1 = document.createTextNode('王保保');
+        // appendChild 插操作
+        // div.appendChild(text);
+        // div.appendChild(span);
+        // span.appendChild(text1);
+        // span.appendChild(text); // 会把div里面的剪切出来
+
+        // var span = document.getElementsByTagName('span')[0];
+        // var strong = document.createElement('strong'); //创建一个strong
+        //insertBefore 插操作
+        // div.insertBefore(strong, span)  //在span之前插入strong
+
+
+        // 删 两种方法 parent.removeChild()父节点删除子节点(谋杀); child.remove()（自尽）
+        // span.remove() //销毁
+        // var i = div.removeChild(span) //他其实不是真的销毁而是剪切
+        // console.log(i); //<span></span>
+        
+        // 替换 parent.replaceChild(new, origin)  新的替换旧的
+
+
+    //    console.log( div.innerHTML); //取出div中的内容
+    //    console.log(div.innerHTML = 123); //span被覆盖加入123
+    // console.log(div.innerHTML+= '123');  //这样写就是追加 123
+    div.innerHTML = "<span style='background-color: aqua; color: red;font-size: 18px;'>123456</span>"
+    console.log( div.innerText ); //123456 取出文本内容
+     div.innerText = "456"// 会把所有的东西覆盖，把加入的span也覆盖了，把原有的span也覆盖了  火狐浏览器不支持他支持textContent
+    div.setAttribute("class","demo") //<div class="demo">456</div>  属性名 属性值 放入
+   console.log( div.getAttribute("class"));  //demo  拿出
+   
+    </script>
+</body>
+</html>
