@@ -1,0 +1,33 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 封装方法返回浏览器视口尺寸getViewportOffset() -->
+    <script>
+        function getViewportOffset () {
+            if(window.innerWidth){
+                return {
+                    w: window.innerWidth,
+                    h: window.innerHeight
+                }
+            }else{
+                if(document.compatMode == "CSS1Compat") {  //标准模式
+                   return{
+                    w: document.documentElement.clientWidth,
+                    h: document.documentElement.clientHeight
+                   }
+                }else if(document.compatMode == "BackCompat"){ // 混杂模式/怪异模式
+                    return{
+                        w: document.body.clientWidth,
+                        h: document.body.clientHeight
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

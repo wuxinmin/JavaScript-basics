@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            padding: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.getElementsByTagName("div")[0]
+        console.log(div.getBoundingClientRect());
+        /*
+        bottom: 200
+        height: 100
+        left: 100
+        right: 200
+        top: 100
+        width: 100
+        x: 100
+        y: 100 
+        */
+       //查看尺寸
+       console.log(div.offsetWidth); // 100  如果加上padding 300  视觉上的尺寸 当然不包含margin
+       console.log(div.offsetHeight); // 100  如果加上padding 300
+
+       //查看位置
+       console.log(div.offsetLeft);  // 100 相对于父级，不管是定位生成还是margin什么的生成它只相对于有定位的父级
+       console.log(div.offsetTop);  // 100
+       
+       //复习bod元素有默认的8px的margin
+       
+
+    </script>
+</body>
+
+</html>

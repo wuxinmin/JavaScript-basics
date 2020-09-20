@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- 
+
+    加上它 <!DOCTYPE html> 浏览器渲染模式就是标准模式，不加就是怪异模式/也叫混杂模式
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 求可视区窗口的尺寸 -->
+    <script>
+        //w3c标准
+        // window.innerWidth/ window.innerHeight
+        
+        //ie8/ie8以下 
+        //标准模式
+        //document.documentElement.clientWidth/ document.documentElement.clientHeight
+
+        //适用于怪异模式下
+        //document.body.clientWidth/ document.body.clientHeight
+    </script>
+</body>
+</html>
