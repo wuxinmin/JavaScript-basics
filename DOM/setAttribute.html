@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <strong></strong>
+    <span></span>
+    <script>
+        var all = document.getElementsByTagName("*");
+        for(var i = 0; i < all.length; i ++) {
+            all[i].setAttribute("this-name", all[i].nodeName);  //<div this-name="DIV"></div>  所有元素都加上this-name=
+        }
+    </script>
+</body>
+</html>

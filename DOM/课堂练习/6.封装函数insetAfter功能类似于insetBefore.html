@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 封装函数insertAfter功能类似于insertBefore-->
+    <div>
+        <p></p>
+        <b></b>
+        <i></i>
+    </div>
+    <script>
+        // insertBefore  insert一个标签 before一个标签之前
+        //insertAfter 那么要将一个标签放到另一个之后呢，原理就是放到下一个标签的前面
+        Element.prototype.insertAfter = function(targetNode, afterNode) {
+            var beforeNode = afterNode.nextElementSibling;
+            // this.insertBefore(targetNode, beforeNode);
+
+            if(beforeNode == null){
+                this.appendChild(targetNode)
+            }else{
+                this.insertBefore(targetNode, beforeNode);
+            }
+        }
+        var div = document.getElementsByTagName('div')[0];
+        var b = document.getElementsByTagName('b')[0];
+        var i = document.getElementsByTagName('i')[0];
+        var span = document.createElement('span');
+
+        div.insertAfter(b, span)
+    </script>
+</body>
+</html>

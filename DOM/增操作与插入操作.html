@@ -30,7 +30,7 @@
         // var span = document.getElementsByTagName('span')[0];
         // var strong = document.createElement('strong'); //创建一个strong
         //insertBefore 插操作
-        // div.insertBefore(strong, span)  //在span之前插入strong
+        // div.insertBefore(span, strong)  //insert span 在strong之前
 
 
         // 删 两种方法 parent.removeChild()父节点删除子节点(谋杀); child.remove()（自尽）
@@ -48,7 +48,7 @@
     console.log( div.innerText ); //123456 取出文本内容
      div.innerText = "456"// 会把所有的东西覆盖，把加入的span也覆盖了，把原有的span也覆盖了  火狐浏览器不支持他支持textContent
     div.setAttribute("class","demo") //<div class="demo">456</div>  属性名 属性值 放入
-   console.log( div.getAttribute("class"));  //demo  拿出
+   console.log( div.getAttribute("class"));  //demo  拿出 剪切
    
     </script>
 </body>
