@@ -8,7 +8,19 @@
 <body>
     <script>
         // setInterval(function() {}, 1000)  //每隔1000毫秒就会执行一次函数，永不休止
-      
+        var retMyDate=function(){
+		    var date=new Date()
+		    var year=date.getFullYear();  //取出何年
+		    var month=date.getMonth()+1;  //取出何月 0-11
+		    var day=date.getDate(); //取出何日
+		    var hour=date.getHours() //取出何时
+		    var Mi=date.getMinutes() //取出何分
+		    var se=date.getSeconds() //取出何秒
+		 
+		    console.log("今天是"+year+"年"+month+"月"+day+"日"+hour+"时"+Mi+"分"+se+"秒")
+		    
+		 }
+         retMyDate();
     </script>
 </body>
 </html>
