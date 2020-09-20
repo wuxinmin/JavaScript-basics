@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        minutes: <input type="text" value="0">
+        seconds: <input type="text" value="0">
+        <button>停止</button>
+        <button>开始</button>
+        <button>重置</button>
+    </div>
+    <script>
+        var secondsNode = document.getElementsByTagName('input')[1]
+        var minutesNode = document.getElementsByTagName('input')[0]
+        var button1 = document.getElementsByTagName('button')[0]
+        var button2 = document.getElementsByTagName('button')[1]
+        var button3 = document.getElementsByTagName('button')[2]
+        
+
+        var seconds = 0;
+        var minutes = 0;
+       function clock() {
+        var timer = setInterval(function() {
+            seconds ++;
+            if(seconds == 60){
+                seconds =0;
+                minutes ++
+            }
+            secondsNode.value = seconds;
+            minutesNode.value = minutes;
+        //     if(minutes == 3){
+        //     clearInterval(timer)
+        // }
+        }, 10)
+
+
+
+
+        //将其修改为秒表计时器
+        button1.onclick = function() {
+            clearInterval(timer)
+        }
+        button3.onclick = function(){
+            clearInterval(timer)
+            secondsNode.value = 0;
+            minutesNode.value = 0;
+        }
+       }
+    //    clock();
+       
+        button2.onclick = function() {
+            clock();
+        }
+        
+        
+    </script>
+</body>
+</html>

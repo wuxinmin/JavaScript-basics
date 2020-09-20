@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = new Date();
+        date.setMinutes(49); //设置分钟
+        date.setSeconds(1);//设置秒数
+        setInterval(function() {
+            if(new Date().getTime() - date.getTime() > 1000){
+                console.log('宝宝起床了');  
+            }
+        },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 日期对对象 -->
+    <script>
+        var date = new Date  
+        //从创建的时候记录此时的年月日时分秒。。。他不是实时的
+
+        //getTime 自1970年1月1日至今的一个毫秒数  计算机的一个零点年，纪元年
+        date.getTime()
+        //时间戳
+    </script>
+    <!-- 例子 -->
+    <script>
+        // 计算程序运行时间
+        var firstTime = new Date().getTime();
+        for(var i = 0; i < 100000000; i++){
+
+        }
+        var lastTime = new Date().getTime();
+        console.log(lastTime - firstTime);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- setInterval 循环执行-->
+    <!-- <script>
+        // clearInterval
+        var i = 0;
+        var timer = setInterval(function() {
+            console.log(i++);
+            if(i > 10){
+                clearInterval(timer)
+            }
+        },1000)
+    </script> -->
+    <!-- setTimeout 间隔多少秒之后执行-->
+
+    <script>
+        var timer = setTimeout(function() {
+            console.log(this);  //setTimeout
+            
+            console.log("a");  //间隔1000毫秒之后执行，只执行一次
+            //例如一个电影什么的试看5分钟，但是在5分钟之内登录会员了，就要取这个    
+        },1000)
+
+        //清除定时器
+        clearTimeout(timer)
+    </script>
+    <!-- 注意他们都属于window上的方法，内部的this指向的是window -->
+
+    <script>
+        // 还有其他形势的写法
+        var timer = setInterval("console.log('a')", 1000);  //每隔1000毫秒执行一次双引号里面的代码
+        clearInterval(timer)
+        //就是一种特殊的写法
+    </script>
+</body>
+</html>
