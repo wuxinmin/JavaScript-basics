@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 这样就属于外部样式 -->
+    <!-- <link rel="stylesheet" href=".../12.css"> -->
+    <!-- 这属于css 内嵌样式 -->
+    <style>
+        .demo{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <!-- dom是不可以直接操作css属性的但是可以间接操作 -->
+    <div class="demo"  style="width: 200px;"></div>  
+    <!-- 这就属于css行间样式 -->
+    <script>
+        var div = document.getElementsByTagName("div")[0];
+        // 注意这样写都只能写道行间样式 
+        div.style.backgroundColor = "red"  //通过div.style.间接修改css属性
+        div.style.borderRadius = "50%"
+    </script>
+</body>
+</html>
