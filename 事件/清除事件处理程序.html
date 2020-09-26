@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: 100px; height: 100px; background-color: black;"></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        // div.onclick = function() {
+        //     div.style.backgroundColor = "green";
+        //     this.onclick = null;
+        // }
+        // //清除事件处理程序
+        // div.onclick = null
+
+        // div.addEventListener('click', test, false);
+        // function test () {
+        //     div.style.backgroundColor = "green";
+        // }
+        // div.removeEventListener('click', test, false)
+
+
+        //ie
+        div.attachEvent('onclick', test)
+        function test () {
+            div.style.backgroundColor = "green";
+        }
+        div.detachEvent('onclick', test)
+    </script>
+</body>
+</html>

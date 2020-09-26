@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background-color:aqua;"></div>
+    <script>
+        //句柄 它和写入行间是一样的
+        var div = document.getElementsByTagName("div")[0];
+        // div.onclick = function() {
+        //     console.log("a");
+            
+        // }
+        
+        //可以给多个函数绑定处理函数
+        // div.addEventListener('click', function() {
+        //     console.log("a");
+            
+        // }, false)
+        // div.addEventListener('click', function() {
+        //     console.log("b");
+            
+        // }, false)
+        div.attachEvent('onclick',function(){
+            // console.log(a);   
+            document.write('a')
+        })
+    </script>
+</body>
+</html>

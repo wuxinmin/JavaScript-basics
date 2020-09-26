@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 函数处理程序的运行环境 -->
+    <div style="height: 100px; width: 100px; background-color: aqua;"></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        // div.onclick = function() {
+        //     console.log(this);
+        //     //this 指向的就是div
+        // }
+        div.addEventListener('click', function () {
+            console.log(this);
+            //this 指向的任然是
+        }, false)
+
+        //但是 
+        // div.attachEvent 中this 指向的是window  现在好像也不用了新版本ie都不兼容
+    </script>
+    <script>
+        //封装一个函数 addEvent就是给一个dom对象添加一个该事件类型的处理函数
+        function addEvent(elem, type, handle) {  //元素 ， 类型， 处理函数
+            if (elem.addEventListener) {
+                elem.addEventListener(type, handle, false)
+            } else if (elem.attachEvent) {
+                elem.attachEvent('on' + type, function () {
+                    handle.call(elem);
+                })
+            } else {
+                elem['on' + type] = handle;  //[] 与 .
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -81,3 +81,16 @@ function stopBubble(e) {
         window.event.cancelBubble = true;
     }
 }
+
+//封装一个函数 addEvent就是给一个dom对象添加一个该事件类型的处理函数
+function addEvent(elem, type, handle) {  //元素 ， 类型， 处理函数
+    if(elem.addEventListener){
+        elem.addEventListener(type, handle, false)
+    }else if(elem.attachEvent) {
+        elem.attachEvent('on' + type, function(){
+            handle.call(elem);
+        })
+    }else{
+        elem['on' + type] = handle;  //[] 与 .
+    }
+}
