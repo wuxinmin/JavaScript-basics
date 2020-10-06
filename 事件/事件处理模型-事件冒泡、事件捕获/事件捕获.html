@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .warpper{
+        .warpper {
             width: 300px;
             height: 300px;
             background-color: cadetblue;
         }
-        .content{
+
+        .content {
             width: 200px;
             height: 200px;
             background-color: chartreuse;
         }
-        .box{
+
+        .box {
             width: 100px;
             height: 100px;
             background-color: coral;
         }
     </style>
 </head>
+
 <body>
     <!-- 事件捕获-->
     <!-- 就是把做外面的先抓住，然后一级一级往子元素走 -->
@@ -35,30 +39,32 @@
         var content = document.getElementsByClassName('content')[0];
         var box = document.getElementsByClassName('box')[0];
         // 以下是事件冒泡
-        warpper.addEventListener('click',function() {
+        warpper.addEventListener('click', function () {
             console.log('warpperBubble')//点击 warpper 返回  warpper
         }, false);
-        content.addEventListener('click',function() {
+        content.addEventListener('click', function () {
             console.log('contentBubble') //点击 content 返回content warpper  
         }, false);
-        box.addEventListener('click',    function() {
+        box.addEventListener('click', function () {
             console.log('boxBubble')  //点击box 返回box content warpper
         }, false);
 
         // 以下是事件事件捕获
-        warpper.addEventListener('click',function() {
+        warpper.addEventListener('click', function () {
             console.log('warpper')//点击 warpper 返回  warpper
         }, true); //把false改为true立刻将事件冒泡变为事件捕获  和冒泡不一样的是它输出的顺序不一样了
-        content.addEventListener('click',function() {
-            console.log('content') //点击 content 返回 warppercontent
+        content.addEventListener('click', function () {
+            console.log('content') //点击 content 返回 warpper content
         }, true);
-        box.addEventListener('click',    function() {
+        box.addEventListener('click', function () {
             console.log('box')  //点击box 返回 warpper content box
         }, true);
     </script>
     <!--
-         注意：如果捕获和冒泡一起出现的话先执行捕获后冒泡，但是但是如上题 最里面的box不是捕获和冒泡得来的是人家自己执行的
+         注意：如果捕获和冒泡一起出现的话先执行捕获后冒泡，但是但是如上题 最里面的box不是捕获和冒泡得来的是人家自己执行的  
+         所以输出结果warpper content boxBubble box contentBubble warpperBubble
     
     -->
 </body>
+
 </html>

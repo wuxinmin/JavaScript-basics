@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //构造函数继承
+        function Animal() {
+            this.type = "动物"
+        };
+        function Cat(name, color) {
+            Animal.apply(this); //将Animal对象的成员复制到Cat对象上
+            this.name = name;
+            this.color = color;
+        };
+        var cat1 = new Cat("小黄", "yellow");
+        var cat2 = new Cat("小花", "花色");
+        cat1.type = "我是猫";
+        console.log(cat1); 
+        console.log(cat2);
+        
+        //注意： 这里的call和apply只能拷贝其成员信息，原型对象里面的就不能拷贝
+
+        //优点：不存在修改原型对象影响所有实例，各自有各自的独立属性（只是复制了一份）
+        //缺点：父类的成员被创建了多次。存在冗余且不是同一个原型对象
+    </script>
+    <!-- 
+        apply / call
+        改变this指向，传参列表不同
+        这里就相当于复制一份Animal对象里面的属性到 Cat里面
+     -->
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //原型继承
+        function Animal() {
+            this.type = "动物"
+        };
+        function Cat(name, color) {
+            this.name = name;
+            this.color = color;
+        };
+        Cat.prototype = new Animal();
+        var c1 = new Cat('x', '白色');
+        var c2 = new Cat('y', "花色");
+
+        //Cat 函数对象   c1 c2 实例化对象   c1 c2 指向 Cat.prototype 就是继承
+
+        //优点：同一个原型对象
+        //缺点：不能修改原型对象，会影响所有实例
+        c1.__proto__.type = "我是一只猫";
+        console.log(c2.type); //我是一只猫  被修改了
+        
+    </script>
+</body>
+</html>
