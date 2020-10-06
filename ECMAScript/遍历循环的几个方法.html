@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- for  in 循环 -->
+    <script>
+        var arr = [{check:true,id:1},{check:false,id:2},{check:false,id:3},{check:true,id:4}]
+        for(var key in arr) {
+            // console.log(key);
+            // console.log(arr[key]); //注意这里的key是变量，所以不能用点的形势
+            if(arr[key].check == true){
+                console.log(arr[key].id); 
+            }  
+        }
+    </script>
+    <!-- for -->
+    <script>
+        var arr = ["a", "b", "c", "d"];
+        for(var i = 0; i < arr.length; i++){
+            console.log(arr[i]); 
+        }
+    </script>
+    <!-- forEach -->
+    <script>
+        var arr = ["a", "b", "c", "d"];
+        arr.forEach(function(item, index) {  //item就相当于 arr[i]， index是索引
+            console.log("item:"+item+1);
+            // return item + 1; //这样就不行了一定记住 forEach没有返回值
+        });
+    </script>
+    <!-- map -->
+    <script>
+        var arr = ["a", "b", "c", "d"];
+        var arr1 = arr.map(function(item, index) {  //item就相当于 arr[i]， index是索引
+            console.log("map:"+item);
+            return item + 1; //但是map 有返回值
+        });
+        console.log(arr1);
+    </script>
+    <!-- filter 相当于删选 返回值返回满足条件的数组-->  
+    <script>
+        var arr = [1,22,20,89,399];
+        var arr1 = arr.filter(function(item, index) {  //item就相当于 arr[i]， index是索引
+            return item > 20;  //返回满足条件的数组
+        });
+        console.log(arr1);
+    </script>
+    <!-- every 所有都满足条件就返回true-->
+    <script>
+        var arr = [19,22,20,89,399];
+        var arr1 = arr.every(function(item, index) {  //item就相当于 arr[i]， index是索引
+            return item > 20;  //false  有一个条件不满足就返回false
+        });
+        console.log(arr1);
+    </script>
+    <!-- reduce 累加 类似于乞讨方案-->
+  <script>
+      var arr = [19,22,20,89,399];
+        var arr1 = arr.reduce(function(total, cur) {  //
+            return  total + cur 
+            //乞讨方案 先放10块（相当于初始化） 后面就跟着 + 10 +12 +13 +14.。
+        },0); //初始化0 不写默认为0
+        console.log(arr1);   
+  </script>
+</body>
+</html>
