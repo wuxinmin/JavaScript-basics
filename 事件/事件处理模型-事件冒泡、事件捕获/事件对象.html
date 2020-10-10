@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wapper" style="width: 100px;height: 100px;background-color: red;">
+        <div class="box" style="width: 50px;height: 50px; background-color: green;"></div>
+    </div>
+    <script>
+        // var div = document.getElementsByTagName("div")[0];
+        var wapper = document.getElementsByClassName("wapper")[0];
+        var box = document.getElementsByClassName("box")[0];
+        wapper.onclick = function (e) {
+            
+            var event = e || window.event; //需要做一个兼容
+            //事件源对象
+            var target = event.target || event.srcElement; // 火狐 IE
+            console.log(target);
+        }
+    </script>
+</body>
+
+</html>

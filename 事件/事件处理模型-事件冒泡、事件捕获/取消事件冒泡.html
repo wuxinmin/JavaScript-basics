@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warpper{
+            width: 300px;
+            height: 300px;
+            background-color: cadetblue;
+        }
+        .content{
+            width: 200px;
+            height: 200px;
+            background-color: chartreuse;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div class="warpper">
+        
+    </div>
+    <!-- 取消事件冒泡 -->
+    <script>
+        document.onclick = function() {
+            console.log("你闲的呀！！");  //点击有色方块也会打印  原本意图是点击空白区域打印   
+        }
+        var div = document.getElementsByTagName("div")[0];
+        div.onclick = function (e) {
+            //这里传值 e 系统会帮忙传一个 事件对象，这个事件对象会记载事件发生时的关键信息，以供我们使用
+            console.log(e); // 记载了事件发生时的一系列状态、信息
+            // 它上面又会有一个方法会阻止事件冒泡
+            // e.stopPropagation(); // 一旦执行了这个点击之后它就不冒泡了  w3c标准 ie9
+            e.cancelBubble = true; //它属于ie的，但是谷歌给实现了 
+
+            div.style.backgroundColor = "green"; // 变色的同时，会打印出 你闲的呀！！所以需要取消事件冒泡
+        }
+    </script>
+</body>
+</html>

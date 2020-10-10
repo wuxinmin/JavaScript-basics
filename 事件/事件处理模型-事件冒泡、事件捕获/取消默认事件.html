@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../tools.js"></script>
+</head>
+<body>
+    <div>
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+    <a href="#">www.baidu.com</a> 
+    <!-- a标签默认事件，点击自动回到顶端 所以工作中我们经常来取消它的默认事件 -->
+    <!-- 也可以这样 javascript:void(0) -->
+    <a href="javascript:void(0)">demo</a>
+    <div>
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>  
+    </div>
+    <!-- 右键出菜单事件 -->
+    <script>
+        // document.oncontextmenu = function(e) {
+        //     // e.preventDefault(); // w3c标准
+        //     e.returnValue = false; // IE的谷歌实现了
+        //     console.log("出现菜单了吗？");
+        //     // return false;  // 这是最原始的方法
+        // }
+        var a = document.getElementsByTagName("a")[0];
+        a.onclick = function(e) {
+            cancelHandler(e);
+            // console.log("点击");
+            
+            // return false;
+        }
+    </script>
+</body>
+</html>

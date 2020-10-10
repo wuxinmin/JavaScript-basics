@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 如果需要实现，点击就是点击事件，拖拽就是拖拽事件（利用时间戳） -->
+    <div style="width: 50px;height: 50px;background-color:red;position: absolute; left: 0; top: 0;"></div>
+    <script>
+        var div = document.getElementsByTagName("div")[0];
+        var firstTime = 0,
+            lastTime = 0;
+        var key = false;
+        var disX,
+            disY;
+        div.onmousedown = function (e) {
+            firstTime = new Date().getTime();
+            if (!key) {
+                disX = e.pageX - parseInt(div.style.left);
+                disY = e.pageY - parseInt(div.style.top);
+
+                //鼠标监听的时候可能跟不上挪动的速度 所以这一块把div 改成document 全屏
+
+                document.onmousemove = function (e) {  //当鼠标移动时触发事件
+                    var event = e || window.event;  //统一事件对象
+                    // console.log(event.pageX + " " + event.pageY);
+                    div.style.left = event.pageX - disX + "px";
+                    div.style.top = event.pageY - disY + "px";
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                }
+            }
+        }
+        div.onmouseup = function () {
+            lastTime = new Date().getTime();
+            if (lastTime - firstTime < 300) {
+                key = true;
+            }
+        }
+
+        div.onclick = function () {
+            if (key) {
+                console.log("根据时间戳这是一个点击事件");
+                key = false;
+            }
+        }
+
+
+        // div.onmousedown = function (e) { //鼠标点下之后  
+
+        // }
+
+
+    </script>
+</body>
+
+</html>

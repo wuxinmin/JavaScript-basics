@@ -74,23 +74,58 @@ function getStyle(elem, prop) { //dom元素， 属性
 
 //阻止事件冒泡
 function stopBubble(e) {
+    // 这里传值 e 系统会帮忙传一个 事件对象，这个事件对象会记载事件发生时的关键信息，以供我们使用
     if (e && e.stopPropagation) {//非IE
-        e.stopPropagation();
+        e.stopPropagation(); // w3c 标准
     }
     else {//IE
         window.event.cancelBubble = true;
     }
 }
 
+//阻止默认事件
+function cancelHandler(e) {
+    if (e && e.preventDefault) {
+        e.preventDefault(); // w3c标准
+    } else {
+        window.event.returnValue = false; // IE的  谷歌实现了
+    }
+}
+
 //封装一个函数 addEvent就是给一个dom对象添加一个该事件类型的处理函数
 function addEvent(elem, type, handle) {  //元素 ， 类型， 处理函数
-    if(elem.addEventListener){
+    if (elem.addEventListener) {
         elem.addEventListener(type, handle, false)
-    }else if(elem.attachEvent) {
-        elem.attachEvent('on' + type, function(){
+    } else if (elem.attachEvent) {
+        elem.attachEvent('on' + type, function () {
             handle.call(elem);
         })
-    }else{
+    } else {
         elem['on' + type] = handle;  //[] 与 .
+    }
+}
+
+//封装一个鼠标拖拽的方法
+function drag(elem) {
+    var disX,
+        disY;
+    addEvent(elem, 'mousedown', function(e) {
+        var event = e || window.event;  //统一事件对象
+        disX = e.pageX - parseInt(getStyle(elem, "left"));
+        disY = e.pageY - parseInt(getStyle(elem, "top"));
+        addEvent(document, 'mousemove', mouseMove);
+        addEvent(document, 'mouseup', mouseUp);
+        stopBubble(event);
+        cancelHandler(event);
+    })
+    function mouseMove() {
+        var event = e || window.event;  //统一事件对象
+        elem.style.left = event.pageX - disX + "px";
+        elem.style.top = event.pageY - disY + "px";
+    }
+    function mouseUp() {
+        var event = e || window.event;  //统一事件对象
+        removeEvent(document, 'mousemove', mouseMove);
+        removeEvent(document, 'mouseup', mouseUp)
     }
 }

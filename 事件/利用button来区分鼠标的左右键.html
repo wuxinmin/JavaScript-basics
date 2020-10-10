@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- mouseup mousedown -->
+    <script>
+        document.onmousedown = function(e) {  // 这里利用 mouseup mousedown 都可以
+            // console.log(e); // e下有一个button 0 表示左击，2表示右击， 1表示点击滚轮            
+            if(e.button == 0) {
+                console.log("左击");
+            }else if(e.button == 2) {
+                console.log("右击");
+            }else{
+                console.log("点击滚轮");
+                
+            }
+        }
+    </script>
+</body>
+</html>
