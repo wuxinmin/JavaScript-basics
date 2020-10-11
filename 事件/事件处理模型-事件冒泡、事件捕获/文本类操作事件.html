@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            border: 1px solid #00f;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <script>
+        //文本类操作事件
+        var input = document.getElementsByTagName('input')[0];
+        input.oninput = function() {
+            console.log(this.value);
+        }
+    </script>
+</body>
+</html>

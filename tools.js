@@ -129,3 +129,24 @@ function drag(elem) {
         removeEvent(document, 'mouseup', mouseUp)
     }
 }
+
+
+//封装函数  异步加载
+
+function loadScript(url, callback) {
+    var script = document.createElement('script');
+    // script.src = url;
+    if(script.readyState) {
+         script.onreadystatechange = function() { //IE
+             if(script.readyState == "complete" || script.readyState == "loaded") {
+                callback();
+             }
+         }
+    }else{
+        script.onload = function() { //safari chrome Firefox opera
+            callback()
+        }
+    } 
+    script.src = url;
+    document.head.appendChild(script);
+}
