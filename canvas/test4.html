@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        // 获取画布元素
+        var canvas = document.getElementById("canvas");
+        // 获得2维对象
+        var ctx = canvas.getContext("2d");
+        // 线条宽度
+        ctx.lineWidth = 3;
+        // ctx.strokeStyle = "red"; // 线条颜色
+        ctx.fillStyle = "blue"; // 填充颜色
+        
+        // 绘制矩形
+        ctx.rect(20, 20, 100, 100);  // x, y, 宽，高
+        // ctx.stroke();  //边框
+        ctx.fill(); //填充
+
+        ctx.strokeRect(20, 200, 100, 100);
+        // ctx.fillRect(200, 200, 100, 100); // 直接绘制填充矩形
+
+        //清除矩形区域
+        ctx.clearRect(30, 30, 50, 50);
+
+
+        //绘制圆形
+        ctx.beginPath(); // 重新绘制
+        ctx.arc(300, 100, 50, 0, Math.PI*2); // x, y, 半径，起始角度
+        ctx.stroke();
+        // ctx.fill();
+
+        //填充渐变色
+        var grd = ctx.createLinearGradient(0, 0, 200, 0); // x0, y0, x1, y1  开始的x，y轴， 结束点的x，y轴
+        grd.addColorStop(0, "red");
+        grd.addColorStop(0.5, "green")
+        grd.addColorStop(1, "blue");
+        ctx.fillStyle = grd; 
+        ctx.fillRect(0, 310, 200, 200);  // x, y, 宽，高
+
+
+        // 文字
+        ctx.font = "50px '微软雅黑'"; // 文字样式 
+        ctx.shadowColor = "black"; // 阴影的颜色
+        ctx.shadowOffsetX = 5; // 阴影 x轴
+        ctx.shadowOffsetY = 5; //阴影 y轴
+        ctx.shadowBlur = 4; // 模糊度
+        ctx.fillText('hello canvas', 300, 50); // text, x, y, maxWith  前三个是必填
+        ctx.strokeText('hello canvas', 300, 150) // 空心字
+    </script>
+</body>
+</html>

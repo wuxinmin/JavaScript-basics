@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        // 获取画布元素
+        var canvas = document.getElementById("canvas");
+        // 获得2维对象
+        var ctx = canvas.getContext("2d");
+        // 线条宽度
+        ctx.lineWidth = 3;
+        //线条颜色
+        ctx.strokeStyle = "red";
+        //填充颜色
+        ctx.fillStyle = "blue";
+        ctx.moveTo(10, 10); // 起点
+        ctx.lineTo(100, 10); //下一点
+        ctx.lineTo(100, 100); //下一点
+        ctx.stroke(); //fill()执行填充色 stroke() 执行线条
+        ctx.fill();
+
+        //重新绘制
+        ctx.beginPath();
+        ctx.moveTo(300, 10);
+        ctx.lineTo(300, 50);
+        ctx.lineTo(400, 50);
+        // ctx.closePath(); // 这个方法就是指闭合
+        ctx.stroke(); 
+    </script>
+</body>
+</html>
