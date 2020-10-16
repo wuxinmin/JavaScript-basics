@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 递归简单的来讲就是自调 但是自调很可能会出现死循环，所以需要准结束条件-->
+
+    <script>
+        var i = 0;
+        function f() {
+            i++;
+            console.log(123);
+            if(i < 5) { // 添加条件
+                f();  // 自己家调用自己  
+            }   
+        }
+        f();
+    </script>
+    <script>
+        // 原理 5+4+3+2+1
+        function f(n) {
+            if(n>=1) {
+                return n+f(n-1);
+            }
+            return 0; // 原因？  看执行顺序
+        }
+        f(5);
+
+        // 执行顺序
+        // 1. f(5) --if成立 --- 5+ ---f(5-1) 自调
+        // 2. f(4) --if成立 --- 5+ ---f(4-1) 自调
+        // 3. f(3) --if成立 --- 5+ ---f(3-1) 自调
+        // 4. f(2) --if成立 --- 5+ ---f(2-1) 自调
+        // 5. f(1) --if成立 --- 5+ ---f(1-1) 自调
+        // 6. f(0) --不成立
+
+    </script>
+</body>
+</html>
