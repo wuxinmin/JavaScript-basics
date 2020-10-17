@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 弹性盒模型方法 */
+        /* .box{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .content{
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        } */
+
+        /*  */
+        .box{
+            width:500px;
+            height: 500px;
+            background: #ff0000;
+            position: relative;
+        }
+        .content{
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* 如果已知宽度高度也可以利用margin */
+
+            /* 未知宽高 就需要transform */
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 子元素在父元素中水平垂直居中 -->
+    <div class="box">
+        <div class="content"></div>
+    </div>
+</body>
+
+</html>

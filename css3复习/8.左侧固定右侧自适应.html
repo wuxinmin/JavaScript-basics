@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 左侧元素宽度固定 右侧自适应 多种方式实现 -->
+
+    <!-- 方法一 弹性盒模型 -->
+    <!-- <style>
+        #div1 {
+            height: 500px;
+            background-color: #474747;
+            /* 弹性盒模型 */
+            display: flex;
+        }
+        #div2 {
+            width: 100px;
+            height: 500px;
+            background-color: cadetblue;
+        }
+        #div3 {
+            height: 500px;
+            background-color: coral;
+            flex: 1;
+        }
+    </style> -->
+
+    <!-- 方法二 浮动：脱离文档流空间释放-->
+    <!-- <style>
+         #div1 {
+            height: 500px;
+            background-color: #474747;
+        }
+        #div2 {
+            width: 100px;
+            height: 500px;
+            background-color: cadetblue;
+            float: left;
+        }
+        #div3 {
+            height: 500px;
+            background-color: coral;
+            margin-left: 110px;
+        }
+    </style> -->
+
+<!-- 方法三 -->
+    <!-- <style>
+        #div1 {
+            height: 500px;
+            background-color: #474747;
+            position: relative;
+        }
+        #div2 {
+            width: 100px;
+            height: 500px;
+            background-color: cadetblue;
+            /* 定位也会脱离文档流 相对于父元素*/
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #div3 {
+            height: 500px;
+            background-color: coral;
+            margin-left: 110px;
+        }
+    </style> -->
+
+<!-- 方法四  -->
+ <style>
+        #div1 {
+            height: 500px;
+            background-color: #474747;
+        }
+        #div2 {
+            width: 100px;
+            height: 500px;
+            background-color: cadetblue;
+        }
+        #div3 {
+            height: 500px;
+            background-color: coral;
+            margin-top: -500px;
+            margin-left: 110px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+        <div id="div3"></div>
+    </div>
+</body>
+</html>

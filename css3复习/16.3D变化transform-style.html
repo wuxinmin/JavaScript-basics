@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div0{
+            width: 200px;
+            height: 200px;
+            border: 1px dashed #000000;
+            perspective: 800px;
+        }
+        .div1{
+            width: 200px;
+            height: 200px;
+            background: #0000ff;
+            transform: rotateY(30deg);
+
+            /* 一定一定注意 如果一个元素的父元素也需要3D效果的话就需要给器加上 */
+            /* 就可以理解为维持3D变化 */
+            transform-style: preserve-3d;
+        }
+        .div2{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            transform: rotateY(40deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="div0">
+        <div class="div1">
+            <div class="div2"></div>
+        </div>
+    </div>
+</body>
+</html>

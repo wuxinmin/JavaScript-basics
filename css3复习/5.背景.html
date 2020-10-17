@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 500px;
+            border:1px dashed black;
+            background: 
+            url(https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1602905199&di=0e0680230351a6a552635126ce71efcf&src=http://f10.baidu.com/it/u=1325972784,3162970541&fm=175&s=FB12368F4E726596F82CCAFA030010B7&w=640&h=812&img.JPEG&access=215967316) no-repeat,
+            url(https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3926818522,2778689812&fm=26&gp=0.jpg); 
+            
+            /* no-repeat 不重复 */
+
+            /* 直接设置背景图片大小 */
+            /* background-size: 300px 400px;  */
+            /* 不会改变原来的比例 然后覆盖 溢出部分自动截取*/
+            /* background-size: cover; */
+            /* 不改变原来比例正好包含进来 */
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

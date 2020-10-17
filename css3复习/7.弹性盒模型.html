@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 500px;
+            height: 300px;
+            background: #ff0000;
+            /* 子元素分父元素的盒子 */
+            /* 首先父元素必须设置 display: flex; */
+            display: flex;
+        }
+        #div2{
+            height: 300px;
+            /* width: 100px; */
+            background: #00ff00;
+            /* 占两份*/
+            flex: 2;
+        }
+        #div3{
+            height: 300px;
+            background: #0000ff;
+            /* 占剩余空间的分数  这里就是占剩余空间的1份 */
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+        <div id="div3"></div>
+    </div>
+
+    <!-- 
+        弹性盒模型
+            父元素:
+              display: flex
+              flex-direction: row | row-reverse | column | column-reverse
+                              水平| 水平颠倒     | 垂直   | 垂直颠倒 
+              align-items: 垂直对齐方法
+                flex-start(居上) | flex-end(居下) | center(居中) | baseline(与基线对齐) | stretch(拉伸)                            
+              justify-content: 水平对齐的方式    
+                flex-start(居左) | flex-end(居右) | center(居中) | space-between | space-around              
+     --> 
+</body>
+</html>
