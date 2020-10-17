@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //百度20分大题
+        var str = "100000000000";
+        //写成 100,000,000,000
+
+        //从后往前查 需要$ 以什么什么结尾也就是从后往签查的意思
+        var reg = /(?=(\B)(\d{3})+$)/g; //首先从后往前查 然后三的位个替换的是空 这个空还不能是单词边界 \B 非单词边界
+        console.log(str.replace(reg, ","));
+        
+    </script>
+</body>
+</html>
