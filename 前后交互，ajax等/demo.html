@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sendData()"></button>
+    <div id="content"></div>
+    <script>
+        function sendData() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("get","http://localhost:3000/get") //最后一个参数默认为true，异步请求
+            xmlhttp.send();//get请求不用传参
+            // xmlhttp.setRequestHeader("Content-Type", "application/json")  //还需要把请求头转化为json的格式
+            // xmlhttp.send(body); // post请求需要传参
+            
+            xmlhttp.onreadystatechange = function() { // 接收数据
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    //xmlhttp.readyState == 4 意思是4个状态都完成了
+                    console.log(xmlhttp.responseText); // 把拿到的数据进行展示
+                    content.innerHTML = xmlhttp.responseText;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
