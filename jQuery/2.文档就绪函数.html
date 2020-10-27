@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        // 原生  onload会等到所有的都加载完毕再执行
+        // window.onload = function() {
+        //     var oDiv = document.getElementById("div1");
+        //     oDiv.style.backgroundColor = "red";
+        // }
+
+        //jQ
+        //文档就绪函数 -> 等到页面结构加载完毕再执行  但是不会等资源
+        $(document).ready(function () {
+            var $div = $("#div1");
+            $div.css("background", "red")
+        })
+
+        // 简写方式
+        $(function() {
+            
+        })
+    </script>
+</head>
+
+<body>
+    <div id="div1">aaa</div>
+</body>
+
+</html>

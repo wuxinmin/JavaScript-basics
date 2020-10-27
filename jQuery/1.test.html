@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <ul>
+        <li>001</li>
+        <li id="li1">002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //原生
+        var oDiv = document.getElementById("div1");
+        //jQuery
+        var $Div = $("#div1");
+        console.log(oDiv.innerHTML);
+        console.log($Div.html());
+
+        // 找兄弟 
+        //原生的就不能直接找
+        // 原生对象转化jquery对象 然后再找兄弟元素
+        var oLi = document.getElementById('li1');
+        
+        console.log($(oLi).siblings());
+        
+        //jquery找兄弟元素
+        // $div.siblings()
+
+        // jq 转 原生 $div[0] 或者 $div.get(0)
+        $div[0]
+        $div.get(0)
+
+    </script>
+</body>
+</html>
