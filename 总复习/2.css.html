@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2000px;
+        }
+        /* div::after{
+            content: "哈哈";
+        } */
+        h1{
+            /* 粘性定位 */
+            /* 用于吸顶操作 */
+            position: sticky;
+            top: 50px;
+            left: 0;
+        }
+        .parent{
+            /* height: 100px;
+            background: #ff00ff; */
+
+            /* overflow: hidden; */
+        }
+        .children1{
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            float: left;
+        }
+        .children2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            float: left;
+        }
+        /* .clearfix{
+            clear: both;
+        } */
+        h2{
+            height: 50px;
+            background-color: #ffc0ff;
+        }
+        
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1.css 选择器
+
+        id选择器
+        class选择器
+        标签选择器
+         后代选择器 div p （div后面所欲的p）
+         子代选择器 div > p
+         选中相邻的兄弟元素 div+p
+         选中后边所有的兄弟元素 div ~ p
+        伪类选择器 :hover :link
+        伪元素选择器 ::after
+        群组选择器 div,p
+        属性选择器 div[id] 选中div中有id属性的
+
+     -->
+
+     <!-- 
+         2.css优先级
+
+         !important
+         style 内联样式    1000
+         id                100
+         class/属性/伪类    10
+         标签/伪元素         1
+         通配符 
+      -->
+
+      <!-- 
+          3.position：
+
+            absolute：绝对定位
+                            定位后释放空间 相对与最近已定位的祖先元素
+            relative：相对定位 
+                            定位后空间不释放 相对于自己的出是位置
+            fixed：固定定位
+                            定位后空间释放 相对于浏览器的可视窗口
+            static：默认定位方式
+                            
+            stickty：粘性定位
+                             吸顶的效果
+
+       -->
+       <!-- 
+           4.浮动
+
+           float 浮动元素会脱离文档流 空间释放 宽高机是内容撑的
+           子元素浮动 父元素高度塌陷
+
+           解决高度塌陷问题：
+                1.给parent添加高度  
+                2.overflow: hidden;  其实就是触发bfc
+                3.加一个空div(其实也可以加一个伪元素 clearfix
+                                                    ::after{
+                                                        content: "",
+                                                        display: block;
+                                                        clear: both;
+                                                    })
+        -->
+     <div>123</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div> 
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <div>哈哈</div>
+     <h1>呵呵</h1>
+
+      
+     <div class="parent clearfix">
+         <div class="children1">111</div>
+         <div class="children2">222</div>
+         <!-- <div class="clearfix"></div> -->
+     </div>
+     <h2></h2>
+</body>
+</html>

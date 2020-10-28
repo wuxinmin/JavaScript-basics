@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            margin-top: 80px;
+            /* overflow: hidden; */
+            /* border: 1px solid transparent; */
+            /* float: left; */
+            /* position: absolute; */
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+            /* 此时想将div2往下踹   但是这样跟着他的父元素一起踹了 他们会选择一个大的来踹*/
+            margin-top: 50px;
+            /* float: left; */
+            position: absolute;
+        }
+
+        /* 
+            解决办法 
+                1 父元素添加 overflow: hidden;
+                2 父元素添加一个边框
+                3 父元素或者子元素浮动 或者定位了
+         */
+         #div3{
+             width: 200px;
+             height: 200px;
+             background: #00ff00;
+             margin-bottom: 50px;
+         }
+         /* 此时他们也会选择一个大的来踹 就会发生合并*/
+         #div4{
+             width: 200px;
+             height: 200px;
+             background: #0f0f0f;
+             margin-top: 20px;
+         }
+    </style>
+</head>
+<body>
+    <!-- <div id="div1">
+        <div id="div2">
+
+        </div>
+    </div> -->
+
+    <!-- 紧挨着的话也可能出现 -->
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+</html>
