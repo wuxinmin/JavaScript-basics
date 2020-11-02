@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function() {
+            // 1.给按钮添加点击事件
+            var btn = document.getElementsByTagName("button")[0];
+            btn.onclick = function() {
+                // 2.获取输入框内容
+                var input = document.getElementsByTagName("input")[0];
+                var text = input.value;
+                // 3.修改img的src属性节点的值
+                $("img").attr("src", text);
+                // $("img").prop("src", text);  // 推荐使用attr
+            }
+        });
+    </script>
+</head>
+<body>
+    <input type="text">
+    <button>切换图片</button> <br>
+    <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1522104106,3646120924&fm=26&gp=0.jpg" alt="">
+</body>
+</html>

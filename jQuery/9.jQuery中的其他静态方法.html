@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+<body>
+    <script>
+
+        /* 
+        $.trim(); 
+        作用： 去除字符串两端的空格
+        参数： 需要去除空格的字符串
+        返回值： 去除空格之后的字符串
+        */
+        // var str = "    jquery    ";
+        // var res = $.trim(str);  // 他可以用来去除空格
+        // console.log("---"+str+"---");
+        // console.log("---"+res+"---");
+        var arr = [1, 7, 3, 9, 10];
+        var arrlike = {
+            0: 1,
+            1: 7,
+            2: 3,
+            3: 9,
+            4: 10,
+            length: 5
+        }
+        var obj = {
+            "name" : "hello",
+            age : 18
+        }
+        var fn = function () {
+
+        }
+        var w = window;
+
+        var res = $.isWindow(arr);
+        console.log(res);  // arr arrlike obj fn  都是 false
+        var res1 = $.isWindow(w);
+        console.log(w);  // true
+        
+        /* 
+            $.isWindow();
+            作用：判断传入的对象时候是否是window对象
+            返回值：true/false 
+        */
+
+
+        /* 
+            $.isArray();
+            作用：判断传入的对象时候是否是真数组
+            返回值：true/false 
+        */
+       var res = $.isArray(arr);
+       console.log(res);
+
+
+       /* 
+            $.isFunction();
+            作用：判断传入的对象时候是否是函数
+            返回值：true/false 
+            注意：jQuery本质上是一个函数
+        */
+       var res = $.isFunction(jQuery);
+       console.log(res);
+    </script>
+</body>
+</html>

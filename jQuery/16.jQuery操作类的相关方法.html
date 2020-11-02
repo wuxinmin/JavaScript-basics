@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .class1 {
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        }
+
+        .class2 {
+            border: 10px solid black;
+        }
+    </style>
+    <script>
+        $(function () {
+            /* 
+            1.addClass(class|fn)
+            作用：添加类
+            如果需要添加多个，多个类名就空格隔开就好了
+
+            2.removeClass([class|fn])
+            作用：删除类
+            如果需要删除多个，多个类之间就加空格就好了
+
+            3.toggleClass(class|fn[,sw])
+            作用：切换类
+            有就删除 没有就添加
+             */
+            var btns = document.getElementsByTagName("button");
+            btns[0].onclick = function () {
+                // $("div").addClass("class1");
+
+                //添加多个
+                $("div").addClass("class1 class2");
+            }
+            btns[1].onclick = function () {
+                $("div").removeClass("class2");
+
+                // 删除多个
+                // $("div").removeClass("class1 class2");
+            }
+            btns[2].onclick = function () {
+                // 切换 有就删除，没有就添加
+                $("div").toggleClass("class1 class2");
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <button>添加类</button>
+    <button>删除类</button>
+    <button>切换类</button>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 7, 3, 9, 10];
+        var obj = {
+            0: 1,
+            1: 7,
+            2: 3,
+            3: 9,
+            4: 10,
+            length: 5
+        }
+        // 1. 利用原生js的mp方法遍历 
+        /* 
+            第一个参数： 当前遍历到的元素
+            第二个参数： 当前遍历到的索引
+            第三个参数： 当前被遍历的数组
+
+            注意：他和原生forEach一样不能遍历类数组
+        */
+        arr.map(function (value, index, array) {
+            console.log(index, value, array);
+        })
+
+
+        /* 
+         第一个参数：要遍历的数组
+         第二个参数：每遍历一个元素之后执行的回调函数
+         回调函数的参数：
+            第一个参数：遍历到的元素
+            第二个参数：遍历到的索引
+
+        注意点：和jQuery中的each一样，map也可以遍历类数组 
+        */
+        $.map(arr, function (value, index){
+            console.log(index, value);           
+        });
+        $.map(obj, function (value, index){
+            console.log(index, value);           
+        });
+
+        /* 
+         each 与 jQuery 他们的区别：
+         each静态方法默认的返回值就是，遍历谁就返回谁
+         map静态方法默认值的返回值是一个空数组
+
+
+         each静态方法不支持在回调函数中对遍历数组进行处理
+         map静态方法可以在回调函数中通过return对遍历的数组进行处理
+        */
+
+        var res = $.map(arr, function (value, index){
+            console.log(index, value);   
+            console.log(index + value); // 可操作
+                    
+        });
+
+        var res1 = $.each(arr, function (value, index){
+            console.log(index, value);           
+        });
+    </script>
+</body>
+
+</html>

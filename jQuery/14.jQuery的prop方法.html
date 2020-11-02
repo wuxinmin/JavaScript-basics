@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /* 
+            1.prop方法
+            特点和attr一致
+            2.removeProp方法
+            特点和和removeAttr一致
+             */
+            // eq(0)表示找到第一个span
+            // $("span").eq(0).prop("demo", "it666");  // 它和attr的效果是一样的
+            // $("span").eq(1).prop("demo", "lnj");
+            // console.log($("span").prop("demo")); // 也是只能找到第一个
+
+            // $("span").removeProp("demo"); // 和removeAttr一致
+
+
+            /* 
+            注意点：
+            prop方法不仅能够操作属性，他还能操作属性节点
+            官方推荐在操作属性节点时，具有true和false两个属性节点，
+            如checked selected disabled 使用prop(), 其他使用 attr()
+
+
+             */
+            // $("span").prop("class");  // 获取到span1
+            // $("span").prop("class", "box") // 属性值修改为 box
+
+            console.log($("input").prop("checked")); // true/false
+            console.log($("input").attr("checked") ); // checked/undefined
+        })
+    </script>
+</head>
+<body>
+    <span class="span1" name = "it666"></span>
+    <span class="span2" name = "lnj"></span>
+
+    <!-- 多选框 checked就是默认选中-->
+    <input type="checkbox" checked>
+</body>
+</html>
