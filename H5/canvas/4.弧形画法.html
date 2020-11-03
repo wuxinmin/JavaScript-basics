@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+
+        /* 
+        arc(x, y, r, 起始弧度, 结束弧度, 弧形的方向)
+        角 以弧度计算 0顺时针1逆时针
+        */
+        //    ctx.arc(250, 250, 100, 0, Math.PI/2, 0); // 顺时针
+        //    ctx.arc(250, 250, 100, 0, Math.PI/2, 1); // 逆时针
+
+        //    ctx.arc(250, 250, 100, 0, Math.PI*2, 0); //  画圆
+        ctx.moveTo(250, 250);
+        ctx.lineTo(350, 250);
+        // ctx.arc(250, 250, 100, 0, -Math.PI / 180 *67, 1); // 画小扇形
+        ctx.arc(250, 250, 100, 0, -Math.PI / 180 *67, 0); // 画小扇形
+        
+        ctx.closePath()
+
+        ctx.stroke();
+    //    ctx.fill();
+    </script>
+</body>
+
+</html>

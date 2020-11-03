@@ -1,0 +1,57 @@
+<!-- 
+    canvas发展历史
+    1.最早在apple的safari 1.3中引入
+    2.ie9之前的浏览器不支持canvas
+    3. http://caniuse.com/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        // 获取画布元素
+        var oCanvas1 = document.getElementById("canvas1");
+        //  画笔2维对象
+        var ctx = oCanvas1.getContext("2d");  // 为什么不是3d 此处我们是2d的
+        // 画笔从什么位置开始
+        ctx.moveTo(100, 100);
+        // 画线的方法
+        ctx.lineTo(200, 100);  // 从100，100 画到 200 200
+        ctx.lineTo(200, 200);
+        //  ctx.lineTo(100, 100); //如果线条有宽度的话就不能完全闭合
+        //  ctx.lineTo(110, 100); // 这样写的话是可以闭合的但是又会慢发
+
+        // 所以出现 closePath 不仅连接了初末点还会补全
+        ctx.closePath();
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 40;
+        //  ctx.fillStyle = "blue";
+        // 画 也就是所说的描边
+        ctx.stroke();
+        //  ctx.fill();
+
+        // 开启一个新的路径
+        ctx.beginPath();
+        ctx.moveTo(300, 100);
+        ctx.lineTo(400, 100);
+        ctx.lineTo(400, 200);
+        ctx.closePath();
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 40;
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

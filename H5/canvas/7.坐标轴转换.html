@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+
+        ctx.save(); // 保存一个到历史栈当中
+        // 平移画布 translate
+        ctx.translate(100, 100);
+        // 旋转
+        ctx.rotate(Math.PI/4);
+        ctx.fillRect(0, 0, 100, 100);
+
+
+        // ctx.save(); // 缩放之后继续保存
+        // ctx.scale(2,1); // 缩放 x轴缩放2倍，y轴缩放1倍
+        // ctx.restore(); // 释放出来
+        // ctx.restore(); // 释放出来
+
+        // // 开启一个新的路径
+        // ctx.fillStyle = "red";
+        // ctx.fillRect(100, 100, 50, 60);
+
+    </script>
+</body>
+ 
+</html> 

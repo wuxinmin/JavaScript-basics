@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        var w = oCanvas.width;
+        var h = oCanvas.height;
+        // 1.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat");
+        // 2.img元素（image对象） canvas元素 video 元素 （有图形的）
+        var oImg = new Image();
+        oImg.src = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1634857565,3916992945&fm=26&gp=0.jpg";
+        oImg.width = 500;
+        oImg.onload = function () {
+            var fill = ctx.createPattern(oImg, "no-repeat");
+            ctx.fillStyle = fill;
+            ctx.fillRect(0, 0, w, h);
+        }
+    </script>
+</body>
+ 
+</html> 

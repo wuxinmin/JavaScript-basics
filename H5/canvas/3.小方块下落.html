@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        var w = oCanvas.width;
+        var h = oCanvas.height;
+        ctx.fillStyle = "green";
+        var y = 100;
+        function drawRect(y) {
+            ctx.fillRect(100, y, 30, 30);
+        }
+        
+        var timer = setInterval(() => {
+            ctx.clearRect(0, 0, w, h)
+            drawRect(y);
+            y += 10;
+            if(y > 470) {
+                clearInterval(timer);
+                drawRect(470);
+            }
+        }, 50);
+        
+    </script>
+</body>
+</html>

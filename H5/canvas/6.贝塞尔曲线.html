@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        
+        var ctx = oCanvas.getContext("2d");
+        
+        // 二次贝塞尔曲线 quadraticCurveTo(x1, y1, ex, ey); x1y1是控制点 exey是结束点
+        // ctx.moveTo(100, 250);
+        // ctx.quadraticCurveTo(150, 100, 300, 200);
+        // ctx.stroke();
+
+
+        // 三次贝塞尔曲线 bezierCurveTo(x1, y1, x2, y2, ex, ey); 
+        ctx.moveTo(100, 250);
+        ctx.bezierCurveTo(100, 200, 150, 100, 250, 150);
+        ctx.stroke();
+        
+    </script>
+</body>
+ 
+</html> 

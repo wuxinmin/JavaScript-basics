@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        // ctx.strokeRect(100, 100, 200, 100);
+        ctx.fillStyle = 'red';
+        ctx.fillRect(100, 100, 200, 100);
+
+        // 阴影 
+        // ctx.shadowColor
+        // ctx.shadowOffsetX
+        // ctx.shadowOffsetY
+        // ctx.shadowBlur
+
+    </script>
+</body>
+
+</html>
