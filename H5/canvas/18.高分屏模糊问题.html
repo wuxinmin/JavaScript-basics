@@ -7,6 +7,8 @@
     <title>Document</title>
     <style>
         #canvas1 {
+            width: 200px;
+            height: 200px;
             border: 1px solid black;
         }
     </style>
@@ -14,22 +16,19 @@
 
 <body>
     <canvas id="canvas1" width="500" height="500"></canvas>
+    <!-- 如果上面你不写值，就代表宽度就是500 500 如果写值了就要将500 500 塞入200px 200px里面 
+        这样的画就会很细腻 来解决高分屏模糊问题
+        注意尽量保持同一比例以避免压缩后图形变形
+    -->
     <script>
         var oCanvas = document.getElementById("canvas1");
         var ctx = oCanvas.getContext("2d");
-        // ctx.strokeRect(100, 100, 200, 100);
-        ctx.fillStyle = 'red';
-        ctx.shadowColor = "deeppink";
-        ctx.shadowOffsetX = 10;
-        ctx.shadowOffsetY = 10;
-        ctx.shadowBlur = 10;
-        ctx.fillRect(100, 100, 200, 100);
 
-        // 阴影 
-        // ctx.shadowColor  颜色
-        // ctx.shadowOffsetX 偏移量
-        // ctx.shadowOffsetY 偏移量
-        // ctx.shadowBlur 模糊程度
+
+        ctx.fillRect(100, 100, 300, 300); // 这里面的宽高都是参考上面 500 500的
+        
+        
+        
         
     </script>
 </body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <!-- <img id="myImg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2642986026,4153273353&fm=26&gp=0.jpg"
+        alt=""> -->
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        // var myImg = document.getElementById("myImg");
+        // 命中检测
+        // ctx.isPointInPath(x, y); 检测是否在区域内，chrome 与 safari 的区别
+        // ctx.isPointInStroke(x, y); 检测是否在线上
+        // 还可以通过检测当前的像素值，如果为透明，则该店不在路径上
+
+        ctx.moveTo(100,100);
+        ctx.lineTo(200,100);
+        ctx.lineTo(200,200);
+        ctx.closePath();
+        ctx.stroke();
+        console.log(ctx.isPointInPath(150, 150)); // true 在区域内
+        console.log(ctx.isPointInPath(300, 300)); // false 不在区域内
+        console.log( ctx.isPointInStroke(200, 200)); // 在线上
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>

@@ -14,22 +14,14 @@
 
 <body>
     <canvas id="canvas1" width="500" height="500"></canvas>
+    <img id="myImg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2642986026,4153273353&fm=26&gp=0.jpg"
+        alt="">
     <script>
         var oCanvas = document.getElementById("canvas1");
         var ctx = oCanvas.getContext("2d");
-        // ctx.strokeRect(100, 100, 200, 100);
-        ctx.fillStyle = 'red';
-        ctx.shadowColor = "deeppink";
-        ctx.shadowOffsetX = 10;
-        ctx.shadowOffsetY = 10;
-        ctx.shadowBlur = 10;
-        ctx.fillRect(100, 100, 200, 100);
-
-        // 阴影 
-        // ctx.shadowColor  颜色
-        // ctx.shadowOffsetX 偏移量
-        // ctx.shadowOffsetY 偏移量
-        // ctx.shadowBlur 模糊程度
+        var myImg = document.getElementById("myImg");
+        ctx.fillRect(0,0,500,500);
+        console.log(ctx.getImageData(0,0,500,500));
         
     </script>
 </body>

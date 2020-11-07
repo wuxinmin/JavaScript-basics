@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <img id="myImg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2642986026,4153273353&fm=26&gp=0.jpg"
+        alt="">
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        var myImg = document.getElementById("myImg");
+        // 将canvas中内容导出
+        // canvas.toDataURL();是canvas字都自身方法不上上下文对象
+        // 将canvas的内容抽取成一张图片，base64编码格式
+        // 注意同源策略的限制
+        // 3.将canvas的内容放入img元素里 
+        myImg.onload = function () {
+            ctx.drawImage(myImg, 100, 100, 300,300, 300, 300, 200, 200); // 那个图片 画到100，100位置
+            var data = oCanvas.toDataURL();
+            console.log(data);
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <!-- <img id="myImg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2642986026,4153273353&fm=26&gp=0.jpg"
+        alt=""> -->
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx = myCanvas.getContext("2d");
+        var w = myCanvas.width;
+        var h = myCanvas.height;
+        function init() {
+            // ctx.globalAlpha = 0.5;  //透明度
+            ctx.fillStyle = "#ccc";
+            ctx.fillRect(0, 0, w, h);
+
+            var img = new Image();
+            img.src = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1944916085,3609366579&fm=26&gp=0.jpg";
+            img.width = 900;
+            img.onload = function() {
+                myCanvas.style.background = 'url('+ img.src +')';
+                myCanvas.addEventListener("mousedown", downFunc, false);
+            }
+
+        }
+        init();
+        function downFunc() {
+            myCanvas.addEventListener('mousemove', moveFunc, false);
+            myCanvas.addEventListener('mouseup', upFunc, false);
+        }
+        function moveFunc() {
+            ctx.beginPath();
+            ctx.arc
+        }
+        function upFunc() {
+
+        }
+
+        
+    </script>
+</body> 
+
+</html>

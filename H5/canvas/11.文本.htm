@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="500" height="500"></canvas>
+    <script>
+        var oCanvas = document.getElementById("canvas1");
+        var ctx = oCanvas.getContext("2d");
+        // 文本
+        /* 
+            1.fillText()
+            2.strokeText()
+            3.measureText('hello world')
+         */
+        //  设置字体大小
+        ctx.fillStyle = "deeppink"
+        ctx.font = "50px span-serif";
+        //  ctx.fillText("不过如此！！！", 100, 100); 
+        // 水平方向
+        ctx.textAlign = "center";
+        // 垂直方向
+        ctx.textBaseline = "middle";
+
+        // 水平垂直居中
+        ctx.strokeText("不过如此", 250, 250);
+    </script>
+</body>
+
+</html>
