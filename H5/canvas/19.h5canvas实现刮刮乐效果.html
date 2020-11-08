@@ -21,35 +21,76 @@
         var ctx = myCanvas.getContext("2d");
         var w = myCanvas.width;
         var h = myCanvas.height;
+        var lastPoint = {},
+            nowPoint = {};
         function init() {
             // ctx.globalAlpha = 0.5;  //透明度
             ctx.fillStyle = "#ccc";
             ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = "destination-out"; // 重合部分透明
 
             var img = new Image();
             img.src = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1944916085,3609366579&fm=26&gp=0.jpg";
             img.width = 900;
-            img.onload = function() {
-                myCanvas.style.background = 'url('+ img.src +')';
+            img.onload = function () {
+                myCanvas.style.background = 'url(' + img.src + ')';
                 myCanvas.addEventListener("mousedown", downFunc, false);
             }
 
         }
         init();
-        function downFunc() {
+        function downFunc(e) {
+            lastPoint.x = e.clientX - myCanvas.offsetLeft;
+            lastPoint.y = e.clientY - myCanvas.offsetTop;
             myCanvas.addEventListener('mousemove', moveFunc, false);
-            myCanvas.addEventListener('mouseup', upFunc, false);
+            document.addEventListener('mouseup', upFunc, false);
         }
-        function moveFunc() {
+        function moveFunc(e) {
+            // console.log("触发次数"); // 查看触发次数
+            
+            nowPoint.x = e.clientX - myCanvas.offsetLeft;
+            nowPoint.y = e.clientY - myCanvas.offsetTop;
             ctx.beginPath();
-            ctx.arc
+            ctx.fillStyle = "transprent";
+            // 连线 解决快速挂出现 小点
+            ctx.lineWidth = 20; // 设置线宽
+            ctx.lineCap = "round"; // 要圆角不要折叠
+            ctx.moveTo(lastPoint.x, lastPoint.y);
+            ctx.lineTo(nowPoint.x, nowPoint.y);
+            ctx.stroke();
+            ctx.arc( nowPoint.x, nowPoint.y, 10, 0, Math.PI * 2, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            lastPoint.x = nowPoint.x;
+            lastPoint.y = nowPoint.y;
         }
         function upFunc() {
-
+            // removeEventListener解绑
+            myCanvas.removeEventListener("mousemove", moveFunc, false); // false默认就是false
+            document.removeEventListener("mouseup", upFunc, false);  // 如果只绑定到canvas上面脱离它的区域抬起就不好使，所以要绑定到ducument
+            clearCanvas();
         }
 
-        
+
+        // 一般我们刮刮乐到70%就会知道自己有没有中奖，所以要自动清除
+        function clearCanvas() {
+            var d = ctx.getImageData(0, 0, w, h),
+                c = 0,
+                len = d.data.length;
+            // 这里计算的时像素，计算划开的总像素，然后拿canvas比较
+            for (var i = 0; i < len; i += 4) {
+                if (d.data[i] === 0) {
+                    c++;
+                }
+            }
+            if (c > len / 4 * 0.7) {
+                ctx.clearRect(0, 0, w, h);
+            }
+        }
+
+
     </script>
-</body> 
+</body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,27 @@
         }
     </style>
 </head>
+
 <body>
     <canvas id="canvas1" width="500" height="500"></canvas>
     <script>
         var oCanvas = document.getElementById("canvas1");
         var ctx = oCanvas.getContext("2d");
         ctx.strokeStyle = "green";
-        ctx.rect(100,100,100,200);
+        ctx.rect(100, 100, 100, 200);
         ctx.fill();
         // 画出且填充 而且默认单独路径
         ctx.strokeStyle = "red";
         ctx.fillStyle = "blue";
-        ctx.fillRect(300,100,100,200);
+        ctx.fillRect(300, 100, 100, 200);
 
 
-        ctx.clearRect(0,0, 150, 150)
-        
+        ctx.clearRect(0, 0, 150, 150)
+
         // 擦除当前区域 ctx.clearRect(x, y, dx, dy)
+
+        ctx.strokeRect(300, 300, 100, 100);
     </script>
 </body>
+
 </html>
