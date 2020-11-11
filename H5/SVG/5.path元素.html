@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path元素</title>
+    <style>
+        svg {
+            border: 2px dashed black;
+        }
+
+        path {
+            stroke: deeppink;
+            stroke-width: 2px;
+            fill: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width=500 height=500>
+        <!-- path元素 
+        1.M指令和L指令  M = moveto 笔 L = lineto 画至
+        <path d = "M 10 10 L 20 10"/>
+        m指令和l指令
+        <path d = "m 10 10 | 20 10"/>
+        区分大小写 大写表示绝对路径 小写表示相对路径  就是相对于上一个点
+        绝对坐标和相对坐标
+        -->
+        <!-- <path d="M 100 100 L 200 100 200 200 300 200 100 100"></path>
+
+        <path d="m 150 200 l 200 100 200 200 300 200 100 100"></path> -->
+
+        <!-- 
+            2. H 与 V  H = horizontal lineto 水平画线 V = vertical lineto 垂直画线
+
+         -->
+         <!-- 小写的话就写挪动距离 相对路径  大写的话就是绝对路径-->
+
+         <!-- z指令不区分大小写 表示闭合 -->
+         <!-- <path d = "m 100 100 h 100 V 200 z"></path>   -->
+
+
+
+         <!-- a指令 圆弧指令 七个参数
+            1.rx ry 圆弧的x轴半径和y轴半径
+            2.x-axis-rotation 圆弧相对x轴的旋转角度,默认是顺时针,可以设置负值
+            3.large-arc-flag 表示圆弧的路径是大圆弧还是小圆弧1表示大圆弧
+            4.sweep-flag 表示从起点到终点是顺时针还是逆时针,1表示顺时针,0表示逆时针
+            5.x y 表示终点坐标,绝对或相对
+        
+        -->
+        <!-- <path d = "M 100 100 A 70 120 90 1 1 150 200"></path>  -->
+        
+        
+        <!-- 贝塞尔曲线
+            二次贝塞尔曲线
+            Q x1 y1, x y
+            T x y  它会在添加一个点(第五个点) 第二个点会根据第三个点找到它的对成点 然后3 4 5三个点就会再次形成贝塞尔曲线
+        -->
+        <!-- <path d = "M 100 200 Q 200 100 300 300 T 400 100"></path>  -->
+
+        <!-- 三次贝塞尔曲线
+            C x1 y1, x2 y2, x y
+            S x2 y2, x y  第四个点为中心点做第三个点的对称点 然后 根据s后面的两个点做出后两个点就可以画出三次贝塞尔曲线
+        -->
+        <path d = "M 0 200   C 100 100 200 100 300 400 S 500 500 400 0"></path>
+
+
+
+    </svg>
+</body>
+
+</html>V

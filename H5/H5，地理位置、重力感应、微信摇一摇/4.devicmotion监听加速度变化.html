@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devicemotion</title>
+</head>
+
+<body>
+    <!-- devicemotion监听加速度变化   需要陀螺仪支持-->
+    <script>
+        // addEventListener事件监听
+
+        window.addEventListener("devicemotion",
+            function (event) {
+                console.log(event);
+            })
+        /*
+         1. accelerationIncludingGravity （包括重心引力，z轴反向加了9.8，在xy方向上的值两者相同）重力加速度
+         2.acceleration 重力加速度
+         3.rotationRate(alpha, beta, gamma) 旋转速率
+         4.interval // 获取时间间隔
+         均为只读属性
+          */
+        /*
+          deviceorientation监听设备在方向上的变化
+        */
+        window.addEventListener(deviceorientation, 
+            function(event) {
+                console.log(event);
+            }
+        )
+    </script>
+</body>
+
+</html>

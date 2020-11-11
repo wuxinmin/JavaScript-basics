@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="item"></div>
+    <script>
+        // 监听设备加速度 （摇一摇）
+        window.addEventListener("devicemotion", function(e) {
+            console.log(e);  // 由于电脑设备的问题很多都获取不了
+            
+            item.innerHTML = e.accelerationIncludingGravity.x + "-" + e.accelerationIncludingGravity.y+ "-" + e.accelerationIncludingGravity.z;
+        })
+
+        // 监听设备在方向上的变化
+        window.addEventListener(deviceorientation, function (event) {
+            console.log(event);
+            
+        })
+    </script>
+</body>
+</html>

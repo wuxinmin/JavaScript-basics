@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getCurrentPosition</title>
+</head>
+<body>
+    <!-- 
+        getCurrentPosition 获取当前位置信息
+        getCurrentPosition(s, e, p)
+        .success 回调（必须）
+        .error 回调
+        .options 参数
+        .需要翻墙
+     -->
+     <script>
+         function suc (pos) {
+             console.log(pos); // 传一个地理位置信息 经纬度 海拔 转速 定位精准度 方向 速度 网络路由的地理位置
+
+         }
+         function err (err) {
+             console.log(err);
+             /* 
+                失败的时候 
+                    用户拒绝：code = 1，
+                    获取不到：code = 2，
+                    连接超时：cosd = 3
+             */
+             
+         }
+         window.navigator.geolocation.getCurrentPosition(suc, err);
+     </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG路径动画</title>
+    <style>
+        svg {
+            border: 2px dashed black;
+        }
+
+        path {
+            stroke: deeppink;
+            stroke-width: 2px;
+            fill: transparent;
+            stroke-linecap: round;
+            /* 实现缩进的效果 */
+            stroke-dashoffset: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--ViewBox = "0, 0, 40, 30" 就是在400 300的区域内实际单位只有40 30 
+        如果不能比的话不会像canvas发生形变
+    -->
+    <svg width=400 height=300 ViewBox = "0, 0, 40, 30">
+        <path d="M 0 10 L 10 10 10 20 " id="path1"></path>
+
+    </svg>
+    <script>
+        console.log(path1.getTotalLength()); //200   
+        console.log(path1.getPointAtLength(50)); // SVGPoint {x: 50, y: 100}
+             
+    </script>
+</body>
+
+</html>

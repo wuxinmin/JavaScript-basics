@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storke-linecap和storke-lineJoin</title>
+    <style>
+        svg {
+            border: 1px solid black;
+        }
+
+        rect {
+            stroke: black;
+            stroke-width: 4px;
+            fill: transparent;
+        }
+
+        circle {
+            fill: transparent;
+            stroke: black;
+            stroke-width: 3px;
+        }
+
+        polyline {
+            stroke: black;
+            fill: transparent;
+            stroke-width: 3px;
+        }
+
+        ellipse {
+            fill: transparent;
+            stroke: black;
+            stroke-width: 3px;
+        }
+
+        text {
+            fill: springgreen;
+            font-size: 25;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width=500 height=500>
+        <!-- 头 -->
+        <rect x=150 y=150 width=200 height=200 rx=20 ry=20></rect>
+        <!-- 头发 -->
+        <polygon points="160 150, 180 125, 220 150,   250 125, 280 150, 320 125, 340 150 "></polygon>
+        <!-- 眼睛 -->
+        <circle r=17 cx=200 cy=220></circle>
+        <circle r=17 cx=300 cy=220></circle>
+        <!-- 眼珠子 -->
+        <circle r=4 cx=207 cy=226 style="fill: black;"></circle>
+        <circle r=4 cx=307 cy=226 style="fill: black;"></circle>
+        <!-- 鼻子 -->
+        <polyline points="242 265, 250 240, 258 265, 242 265"></polyline>
+        <!-- 嘴巴 -->
+        <ellipse rx=35 ry=14 cx=250 cy=300></ellipse>
+
+
+        <!-- 文本 -->
+        <text x=180 y=390  style="font-size: 25;" >hello world</text>
+    </svg>
+</body>
+
+</html>

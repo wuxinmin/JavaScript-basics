@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 设置基准值 800
+        var SHAKE_THRESHOLD = 800;
+        var last_update = 0;
+        // 这里的xyz等一个是当前的一个是上一个的 后面是用来对比的
+        var x, y, z, last_x = 0, last_y = 0, last_z = 0;
+        function deviceMotionHeadler(eventData) {
+            // 加速度 加速度上面有xyz
+            var acceleration = eventData.accelerationIncludingGravity;
+            var curTime = new Date().getTime(); // 时间戳
+            if ((curTime - last_update) > 300) { // 摇一摇不可能很快当他大于300毫秒，主要目的是提高性能
+                var diffTime = curTime - last_update;
+                last_update = curTime; // 当前时间戳付给
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime + 10000;
+                if(speed > SHAKE_THRESHOLD) {
+                    alert("shaked~!");
+                    var div = document.createElement("div");
+                    document.body.appendChild(div);
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
+        // 监听加速度的变化，当加速度变化的时候就执行deviceMotionHeadler函数
+        window.addEventListener("devicemotion", deviceMotionHeadler, false);
+    </script>
+</body>
+
+</html>

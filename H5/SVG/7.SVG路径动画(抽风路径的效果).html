@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG路径动画</title>
+    <style>
+        svg {
+            border: 2px dashed black;
+        }
+
+        path {
+            stroke: deeppink;
+            stroke-width: 20px;
+            fill: transparent;
+            /* 虚线 */
+            stroke-dasharray: 500px;
+            /* 实现缩进的效果 */
+            stroke-dashoffset: 0px;
+            animation: move 1s linear alternate infinite; 
+        }
+        @keyframes move{
+            0%{
+                stroke-dashoffset: 0px;
+            }
+            100%{
+                stroke-dashoffset: 500px;;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg width=500 height=500>
+        <path d="M 0 100 L 500 100" id="path1"></path>
+    </svg>
+    <script>
+        console.log(path1.getTotalLength()); // 500         
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storke-linecap和storke-lineJoin</title>
+    <style>
+        svg{
+            border: 1px solid black;
+        }
+        line{
+            stroke: black;
+            stroke-width: 20px;
+            /* 画多长就是多长 */
+            /* stroke-linecap: butt; */
+            /*圆角 */
+            /* stroke-linecap: round;  */
+            /* stroke-linecap: square;  */
+            /* 方角l两头会多出来 */
+
+            /* 两条线中间拐弯的地方 */
+            stroke-linejoin: round;
+        }
+        polyline{
+            stroke-width: 20px;
+            stroke: black;
+            fill: transparent;
+            /* 两条线中间拐弯的地方 变圆弧 */
+            /* stroke-linejoin: round; */
+            /* 两条线中间拐弯的地方 折叠效果  就是把那个尖尖切掉 */
+            stroke-linejoin:bevel;
+        }
+    </style>
+</head>
+<body>
+    <svg width = 500 height = 500>
+        <!-- <line x1 = 100 y1 = 100 x2 = 200 y2 = 100></line> -->
+        <polyline points = "100 200, 150 100, 200 200, 300, 50"></polyline>
+
+    </svg>
+</body>
+</html>

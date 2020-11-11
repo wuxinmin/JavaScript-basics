@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变</title>
+    <style>
+        svg {
+            border: 2px dashed black;
+        }
+
+        path {
+            stroke: deeppink;
+            stroke-width: 2px;
+            fill: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width=500 height=500>
+        <!--渐变 -->
+        <defs>
+            <!-- 线性渐变 -->
+            <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="100%">
+                <!-- stop规定哪一个点是什么颜色 -->
+                <stop offset="0%" style="stop-color: rgb(255, 255, 0);" />
+                <stop offset="100%" style="stop-color: rgb(255, 0, 0);" />
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="500" height='500' style="fill:url(#bg1)" />
+        <!-- 径向渐变 -->
+
+        <defs>
+            <!-- 线性渐变 -->
+            <radialGradient id="bg2" cx="50%" cy="50%" r = "50%" fx = "50%" fy = "50%">
+                <!-- stop规定哪一个点是什么颜色 -->
+                <stop offset="0%" style="stop-color: green;" />
+                <stop offset="100%" style="stop-color: red;" />
+            </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="500" height='500' style="fill:url(#bg2)" />
+
+
+        <!-- 高斯模糊(滤镜) 了解 -->
+    </svg>
+</body>
+
+</html>

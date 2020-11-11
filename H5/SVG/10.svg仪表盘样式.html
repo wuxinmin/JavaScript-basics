@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        svg {
+            border: 3px dotted black;
+        }
+
+        path {
+            fill: transparent;
+            stroke-width: 10px;
+            stroke-linecap: round;
+        }
+
+        #path1 {
+            stroke: #cccccc;
+        }
+
+        #path2 {
+            stroke: yellow;
+            /* 画1000 缩1000 */
+            stroke-dasharray: 1000px;
+            stroke-dashoffset: 1000px;
+           
+        }
+        .active{
+            transition: all 1s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="btn">
+    <br>
+    <br> 
+    <svg width="500" height="500">
+        <path id="path1" d="M 200 300 A 100 100 0 1 1 300 300"></path>
+        <path id="path2" d="M 200 300 A 100 100 0 1 1 300 300"></path>
+    </svg>
+    <script>
+        var len = path2.getTotalLength();
+        btn.onblur = function () {
+            // console.log(888);
+            var value = this.value;
+            var total = len*value / 100;
+            console.log(total);
+            path2.classList.add("active");
+            path2.style.strokeDashoffset = 1000 - total + "px";
+        }
+        // 获取焦点 
+        btn.onfocus = function () {
+            path2.classList.remove("active");
+
+            path2.style.strokeDashoffset = "1000px";
+        }
+    </script>
+</body>
+
+</html>
