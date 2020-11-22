@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>导航目录</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="font/iconfont.css">
+	<script src='js/vue.js'></script>
+	<script src='js/index2.js'></script>
+</head>
+<body>
+	<div class="tree" id='my'>
+		<ul>
+			<li class="p_item" v-for="(v,i) in items" :key="i">
+				<a class="p_title" :class="n==i ?'selected':''" @click="n=i">
+					<i class="iconfont" :class="v.icon"></i>{{v.name}}
+					<b :class="n==i ?'down':'up'">^</b>
+				</a>
+				<ul class="c_item" v-show="n==i">
+					<li v-for="(sub,j) in v.subItems" :key="j">
+						<a>{{sub.name}}</a>
+					</li>
+				</ul>
+			</li>
+			
+        </li>
+		</ul>
+   </div>
+</body>
+</html>

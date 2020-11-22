@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if指令</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="my">
+        <!-- 
+            注意v-if是整个标签的销毁和重建
+            而v-show就相当于 为false时 display: none 就是显示和隐藏
+         -->
+        <h2 v-if="flag">hello</h2>
+        <!-- <h2 v-show = "flag">world</h2>   -->
+
+        <!-- 复选框 -->
+        <input type="checkbox" v-model="flag">
+        <!-- 不打勾禁用 -->
+        <button :disabled="!flag">{{flag?"选中":"未选中"}}</button>
+        <br>
+        输入年龄：<input type="text" v-model="age">
+        <h2 v-if="age>=30">已经三十喽 {{"你现在"+age+"岁"}}</h2>
+        <h2 v-else-if="age>=20">已经二十喽 {{"你现在"+age+"岁"}}</h2>
+        <h2 v-else="age">还没有二十岁哦 {{"你现在"+age+"岁"}}</h2>
+    </div>
+    <script>
+        new Vue({
+            el: "#my",
+            data: {
+                flag: true,
+                // flag: false
+                age: 18
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

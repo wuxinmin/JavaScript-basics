@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        类：具有相同的属性和方法的集合
+     -->
+    <script>
+        /*  var p1 = {
+             name: "zs",
+             age: 20,
+             say:  function() {
+                 console.log("哈哈");
+             }
+         } */
+
+        //  构造函数 也就是类
+        function Person(name, age) {
+            this.name = name,
+                this.age = age
+            // this.say = function () {
+            //     console.log(this.name + "呵呵"); 
+            // }
+        }
+
+
+
+
+        // 如果又100个人的化就要new100次Function就会占用很大空间
+        // 所以出现了原型的概念
+        /* 
+            函数有一个prototype属性，这个属性是一个指针指向他的原型对象
+            原型对象下的属性和方法 可以被实例化对象所共享
+
+            声明类的时候 把属性写在构造函数中，把方法写在原型中
+         */
+        Person.prototype.gender = "男";
+        Person.prototype.say = function () {
+            console.log(this.name + "哈哈哈");
+            
+        }
+        //  实例化对象
+        var person1 = new Person("zs", 20);
+        var person2 = new Person("ls", 22);
+        console.log(person1.gender); // 男
+        console.log(person2.say()); //ls哈哈哈
+        
+        
+    </script>
+</body>
+
+</html>

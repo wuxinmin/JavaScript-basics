@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.storage 存储、仓库
+        2.cookie
+     -->
+
+     <!-- storage
+        1. localStorage  永久存储，除非手动删除
+        2. sessionStorage 临时存储 窗口关闭就没有了
+    -->
+    <script>
+        // 存一个名字
+        localStorage.name = "aimee" // 去application看到 name = aimee 被存储
+        // 注意点：存储只能是字符串形式
+        // 所以存储的时候可以利用JSON格式存储对象
+        localStorage.info = JSON.stringify({name:"xinmin", company: "yongyou"})
+
+        // localstorage 存储
+        var obj = {
+            name: "xiaomin",
+            age: 21
+        }
+        localStorage.obj = JSON.stringify(obj);
+
+        // localstorage 取值
+        console.log(localStorage.obj); // 字符串 {"name":"xiaomin","age":21} 是字符串形式需要转化一下
+        console.log(JSON.parse(localStorage.obj)); // 对象 {name: "xiaomin", age: 21}
+        
+        sessionStorage.obj = JSON.stringify(obj);
+
+        // API
+        /*  
+            1. setItem(name, val) 设置属性的值
+            2. getItem(name) 获取属性的值
+            3. removeItem(name) 移除属性的值
+            4. clear() 清除属性的值 
+        */
+
+
+        /* 
+            cookie
+            1. 存储信息到用户的设备上，数据量较小
+            2. navigator.cookieEnabled
+               检测是否启用了cookie
+         */
+
+
+         /* 
+            history  栈存储
+            1. history.back()  // 回退一页
+            2. history.forward() // 前进一页
+            3. history.go(n)  // 往前往后翻几页 正数往前翻 负数往后翻
+
+
+            history.length 就是查看有几条历史记录
+
+            为什么要管理历史记录？
+
+            history api的作用？？
+
+            SPA 单页面应用
+
+          */
+
+    </script>
+</body>
+</html>

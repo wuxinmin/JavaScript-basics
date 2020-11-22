@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令</title>
+    <script src="../vue.js"></script>
+    <style>
+        .red {
+            color: red;
+            background-color: #cccccc;
+        }
+
+        .green {
+            color: greenyellow;
+        }
+
+        .d {
+            border: 1px solid black;
+            width: 200px;
+        }
+
+        .d2 {
+            background: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="my">
+        <!-- 单个引用 -->
+
+        <div class="red">直接填写样式名</div>
+        <!-- 利用v-bind此时red就是一个变量，需要在data中添加 -->
+        <div :class="red">利用v-bind</div>
+        <!-- 利用v-bind，还需要样式名 -->
+        <div :class="'green'">利用v-bind，还需要样式名</div>
+        <!-- 打勾不打勾变化颜色  三目运算-->
+        <input type="checkbox" v-model="flag">
+        <div :class="flag? red : green">我是什么颜色</div>
+
+        <!-- 多个引用 -->
+        <div :class="['red','d']">多个引用你学会了吗</div>
+        <div :class="['red',flag?'d':'d2']">那这种呢你学会了吗</div>
+
+        <!-- 键值对方式  flag为真就显示绿色-->
+        <div :class="{'green': flag}">键值对的方式你学会了吗？？</div>
+
+        <!-- 条件时函数 -->
+        <div :class="action(3)">条件是函数你学会了吗？？</div>
+
+        <!-- 单个引用内联样式 -->
+        <div style="color: red;">内联样式</div>
+
+        <!-- 变量 -->
+        <div :style="{color: 'blue'}">内联样式</div>
+        <!-- 多个引用 -->
+        <div :style="{color: 'blue', fontSize: '30px'}">内联样式</div>
+        <div :style="[pink,d3]">内联样式</div>
+
+        <img :src="url" alt="">
+    </div>
+    <script>
+        new Vue({
+            el: "#my",
+            data: {
+                flag: true,
+                red: "red",
+                green: "green",
+                pink: {color: "deeppink"},
+                d3: { backgroundColor: '#cccccc' },
+                url: "https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1221747616,3075254971&fm=26&gp=0.jpg"
+            },
+            methods: {
+                action(v) {
+                    // return 'red'
+                    switch (v) {
+                        case '0':
+                            return 'red'
+                        case '1':
+                            return 'green'
+                        default:
+                            return 'd'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

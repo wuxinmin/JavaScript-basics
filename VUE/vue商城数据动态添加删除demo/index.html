@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VUE</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css" />
+  <script type="text/javascript" src='js/vue.js'></script>
+  <script type="text/javascript" src='js/axios.js'></script>
+  <script type="text/javascript" src='js/index.js'></script>
+</head>
+
+<body>
+  <div id="my">
+    <div class="panel panel-info" style="margin:20px;">
+      <!-- 头部 -->
+      <div class="panel-heading">
+        <h1 style="display: inline-block;">我的购物清单列表</h1>
+        <span>清单总数
+          <!-- 这一块其实就是拿到长度信息 只要data数据发生变化长度就会发生变化 -->
+          <span class="label label-warning">{{lists.length}}</span>
+        </span>
+      </div>
+      <!-- 内容 -->
+      <div class="panel-body">
+        <div class="input-group">
+          <div>
+            <label for="">清单名称</label>
+            <input class="form-control" type="text" v-model="value" placeholder="请输入清单名称" />
+          </div>
+          <div>
+            <label for="">状态</label>
+            <input class="form-control" type="text" v-model="state" placeholder="请输入状态" />
+          </div>
+          <span class="input-group-btn">
+            <!-- 添加的数据不能为空 处理方法有一下几种：
+                 1. 按钮禁用   :disabled = "value" 当value值为空禁用
+                 2. 如果在移动端就不好使了 在添加的时候判断
+                 if(!this.value) return; 添加的时候为空直接返回 及添加不了
+            -->
+            <button class="btn btn-primary" @click="add" :disabled = "!value">添加</button>
+          </span>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>清单名称</th>
+              <th>状态</th>
+              <th>删除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+                  <td>手机</td>
+                  <td>未采购</td>
+                  <td><button type="button" class="btn btn-danger btn-sm">删除</button></td>
+                </tr>
+                <tr>
+                  <td>IPAD</td>
+                  <td>已采购</td>
+                  <td><button type="button" class="btn btn-danger btn-sm">删除</button></td>
+                </tr> -->
+            <tr v-for="(v,i) in lists">
+              <td>{{v.value}}</td>
+              <td>{{v.state | stateFilter}}</td>
+              <td><button type="button" class="btn btn-danger btn-sm" @click="del(i)">删除</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

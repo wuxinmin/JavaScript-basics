@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        js 的数据类型 基本数据类型  引用数据类型
+
+        基本数据类型：String Number Boolean Null Undefined Symbol 
+        typeof  
+
+
+        引用数据类型：Object Function Array 
+     -->
+
+
+     <!-- 
+         我们知道 typeof 我们知道typeof数组和对象都会返回一个Object
+
+         那如何判断数组和对象呢？？？
+         1.Array.isArray  是数组吗？？
+         2.a instanceof Array  实例来自数组吗？？
+         3.***constructor构造函数
+
+      -->
+      <script>
+          var a = [1, 2, 3];
+          var b = {
+              name : "zs"
+          }
+        // 方法一  
+        //   console.log(Array.isArray(a)); // true
+        //   console.log(Array.isArray(b)); //false
+
+        //方法二
+        // console.log(a instanceof Array); // true  
+        // console.log(b instanceof Array); // false  
+
+        // ** 方法三  constructor构造函数
+        console.log(a.constructor);  // Array
+        console.log(b.constructor);  // Object
+        
+      </script>
+</body>
+</html>

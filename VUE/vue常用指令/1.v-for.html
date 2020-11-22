@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for指令</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="my">
+        <!-- 遍历数据 -->
+        <ul>
+            <li v-for="(v,i) in arr">{{v}}，，，，{{i}}</li>
+        </ul>
+        <!-- 遍历对象 -->
+        <ul>
+            <!-- v是值 k是键 他是可以遍历对象的-->
+            <li v-for = "(v,key) in obj">{{v}}，，，，{{key}}</li>
+        </ul>
+        <!-- 遍历数组对象 -->
+        <ul>
+            <li v-for = "(v,i) in lists">{{v.value}}，，，，{{v.state}}</li>
+        </ul>
+
+        <!-- ！！！？？？还能遍历数字 。。。能！！！！ -->
+        <!-- 我们可以直接利用后端传值直接进行分页，通过它可以循环展示页数信息 -->
+        <ul>
+            <li v-for = "(v,i) in n">{{v}}，，，{{i}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#my", // element元素
+            data: { // 数据
+                arr: ["a", "b", "c", "d"],
+                obj: { id: 1, name: "abc" },
+                lists: [
+                    {
+                        value: "手机",
+                        state: "已购买"
+                    },
+                    {
+                        value: "IPAN",
+                        state: "未购买"
+                    }
+
+                ],
+                n: 5
+            },
+            methods: { // 方法
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -13,11 +13,12 @@
             width: 200px;
             height: 200px;
             background: #ff0000;
-            margin-top: 80px;
+            /* margin-top: 80px; */
             /* overflow: hidden; */
             /* border: 1px solid transparent; */
             /* float: left; */
             /* position: absolute; */
+            /* display: inline-block; */
         }
         #div2{
             width: 100px;
@@ -26,15 +27,31 @@
             /* 此时想将div2往下踹   但是这样跟着他的父元素一起踹了 他们会选择一个大的来踹*/
             margin-top: 50px;
             /* float: left; */
-            position: absolute;
+            /* position: absolute; */
         }
 
         /* 
+            以上这种子元素加margin-top父子元素一起动
             解决办法 
                 1 父元素添加 overflow: hidden;
                 2 父元素添加一个边框
                 3 父元素或者子元素浮动 或者定位了
+                4  display: inline-block;
          */
+
+
+         /* 
+            margin塌陷问题：
+            bug:在上下移动的时候会出现bug(margin-top) 父子会选则大的一个进行移动(这就是margin塌陷)
+            解决方法(1)土方法加border-top加线但是不能用来做任务
+            
+            (2)bfc  块级格式化上下文
+            如何触发一个盒子的bfc
+            1.position: absolute;
+            2.display: inline-block;
+            3.float: left/right;
+            4.overflow: hidden; （溢出部分隐藏）       
+          */
          #div3{
              width: 200px;
              height: 200px;
@@ -51,14 +68,14 @@
     </style>
 </head>
 <body>
-    <!-- <div id="div1">
+    <div id="div1">
         <div id="div2">
 
         </div>
-    </div> -->
+    </div>
 
     <!-- 紧挨着的话也可能出现 -->
-    <div id="div3"></div>
-    <div id="div4"></div>
+    <!-- <div id="div3"></div>
+    <div id="div4"></div> -->
 </body>
 </html>

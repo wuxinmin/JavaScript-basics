@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>导航目录</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="font/iconfont.css">
+	<script src='js/vue.js'></script>
+	<script src='js/index.js'></script>
+</head>
+
+<body>
+	<div class="tree" id='my'>
+		<ul>
+			<li class="p_item" v-for="(v, i) in items" :key="i">
+				<!-- 三目运算 -->
+				<a class="p_title " :class="v.flag ? 'selected':''" @click="changeFlag(v)">
+					<!-- 多个引用 -->
+					<i :class="['iconfont',v.icon]"></i>{{v.name}}
+
+					<!-- 这里不知道查朝下的箭头怎么打，多以利用css旋转 -->
+					<!-- <b v-show = '!v.flag'>^</b>
+					<b v-show = 'v.flag'>></b> -->
+					<b :class= "v.flag?'down':'up'">^</b>
+
+				</a>
+				<ul class="c_item" v-show="v.flag">
+					<li v-for="(sub, j) in v.subItem" :key="j">
+						<a>{{sub.name}}</a>
+					</li>
+				</ul>
+			</li>
+
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model指令</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 在实现选择框的时候一定要考虑如何传值给后端 -->
+    <div id="my">
+        <input type="text" v-model="text">
+        <!-- 输入a禁用 -->
+        <input type="text" :disabled="text == 'a'" v-model="text">
+
+        <p>{{text}}</p>
+        <br>
+        <input type="checkbox" v-model='flag'>{{flag}}
+
+        <!-- 复选框组 展示的是什么显示的就是什么-->
+        <div>
+            <!-- value需要获取什么样的结果 -->
+            <input type="checkbox" v-model='flag1' value="html">html
+            <input type="checkbox" v-model='flag1' value="css">css
+            <input type="checkbox" v-model='flag1' value="vue">vue
+            <h2>{{flag1}}</h2>
+        </div>
+
+        <!-- 复选框组 如果后端要求出传值是以数字形式传值-->
+        <div>
+            <!-- value需要获取什么样的结果 -->
+            <input type="checkbox" v-model='flag2' value="0">html
+            <input type="checkbox" v-model='flag2' value="1">css
+            <input type="checkbox" v-model='flag2' value="2">vue
+            <h2>{{flag2}}</h2>
+
+        </div>
+
+        <!-- 复选框组 动态数据-->
+        <div v-for="(v, i) in box" :key="v.id">
+            <!-- 此处注意如果是变量就要用 v-bind  value可以是值也可以是id就看后端需要什么-->
+            <input type="checkbox" v-model='flag3' :value="v.id">{{v.name}}
+        </div>
+        <h2>{{flag3}}</h2>
+
+        <!-- 单选框 -->
+        <div>
+            <input type="radio" v-model="radio" value="0">男
+        </div>
+        <div>
+            <!-- name="test"表示两个在同一个组 -->
+            <input type="radio" v-model="radio" name="test" value="0">男
+            <input type="radio" v-model="radio" name="test" value="1">女
+            <h2>{{radio}}</h2>
+        </div>
+
+        <!-- 下拉框 -->
+        <div>
+            <select v-model="selected">
+                <option>唱歌</option>
+                <option>跳舞</option>
+                <option>喝酒</option>
+            </select>
+            <h2>{{selected}}</h2>
+        </div>
+        <div>
+            <select v-model="selected1">
+                <option value="0">唱歌</option>
+                <option value="1">跳舞</option>
+                <option value="2">喝酒</option>
+            </select>
+            <h2>{{selected1}}</h2>
+        </div>
+
+        <!-- 动态 -->
+        <div>
+            <select v-model="selected2">
+                <option v-for="(v, i) in box1" :key="v.id" :value="v.name">{{v.name}}</option>
+            </select>
+            <h2>{{selected2}}</h2>
+        </div>
+
+        <!-- 修饰符lazy v-model.lazy-->
+        <!-- 此处光标离开后才会改变 -->
+        <input type="text" v-model.lazy="text2">{{text2}}
+        <!-- 修饰符自动过滤首位空格 trim-->
+        <input type="text" v-model.trim="text2">{{text2}}
+
+    </div>
+    <script>
+        new Vue({
+            el: "#my",
+            data: {
+                text: "hello",
+                flag: true,
+                // 默认情况是html
+                flag1: ['html'],
+                flag2: ['1'],
+                flag3: ['2'],
+                box: [{ name: "北京", id: 1 }, { name: "上海", id: 2 }, { name: "广东", id: 3 }, { name: "深圳", id: 4 }],
+                radio: 0,
+                // 单选
+                selected: "喝酒",
+                selected1: "2",
+                selected2: "北京",
+                box1: [{ name: "北京", id: 1 }, { name: "上海", id: 2 }, { name: "广东", id: 3 }, { name: "深圳", id: 4 }],
+                text2: ''
+            },
+            medthods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

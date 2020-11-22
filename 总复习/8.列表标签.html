@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表标签</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1.列表标签的作用？
+        给一堆数据添加列表语义化标签，也就是告诉搜索引擎告诉浏览器这一堆数据是一个整体
+
+        2.HTML列表的分类
+        2.1无序列表（最多）ul
+        2.2有序列表（最少）ol
+        2.3定义列表（其次）
+
+        3.无序列表的应用场景：
+        3.1 新闻列表
+        3.2 商品列表
+        3.3 导航条
+        。。。
+
+        4.有序列表
+
+        5.定义列表的格式
+        应用场景：
+        5.1 做网页尾部的相关信息
+        5.2 做图文混盘
+
+     -->
+
+     <!-- 无需列表  去除小圆点 list-style: none; -->
+     <ul>
+         <li>dfg</li>
+     </ul>
+
+
+     <!-- 
+        默认是阿拉伯数字
+        type="A" type="a" type="I" type="i"
+     -->
+     <ol>
+         <li>女人不应该让男人太累</li>
+         <li>男人不应该让女人流泪</li>
+     </ol>
+
+     <!-- 定义列表格式 -->
+     <dl>
+         <!-- 
+            dt dd 看成一个整体 
+            dt 定义列表中的标题
+            dd 定义描述
+        -->
+        <dt>北京</dt>
+        <dd>中国的首都</dd>
+
+        <dt>上海</dt>
+        <dd>富人集中地</dd>
+     </dl>
+</body>
+</html>

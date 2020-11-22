@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        requestAnimationFrame  Animation帧  
+        计时器做动画并不标准  电脑浏览器刷新一次的时间16ms所以设置16ms是最好的效果，不过电脑之间可能会又差异
+    -->
+
+    <!-- 
+        缺点 只适合ie10以上的浏览器
+     -->
+
+
+    <div class="btn"></div>
+    <script>
+        // setTimeout
+        /*  var timer;
+         var btn = document.getElementsByClassName('btn')[0];
+         function move() {
+             btn.style.left = btn.offsetLeft + 10 + 'px';
+             
+             timer = setTimeout(() => {
+                 move();
+             }, 16);
+             if (btn.offsetLeft >= 1000) {
+                 clearTimeout(timer);
+                 btn.style.left = '1000px'
+             }
+         }
+         move(); */
+
+
+        // requestAnimationFrame
+
+        // 兼容性的requestAnimationFrame
+        window.requestAnimationFrame = (function () {
+            return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                }
+            )
+        })()
+
+        // 兼容性的cancelAnimationFrame
+        window.cancelAnimationFrame = (function () {
+            return (
+                window.cancelAnimationFrame ||
+                window.webkitCancelAnimationFrame ||
+                window.mozCancelAnimationFrame ||
+                function (id) {
+                    window.clearTimeout(id);
+                }
+            )
+        })()
+         var req;
+         var btn = document.getElementsByClassName('btn')[0];
+         function move() {
+             btn.style.left = btn.offsetLeft + 10 + 'px';
+             
+             req = requestAnimationFrame(move);
+             if (btn.offsetLeft >= 1000) {
+                cancelAnimationFrame(req);
+                btn.style.left = '1000px'
+             }
+         }
+         move();
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+body {
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+body,html{
+    width:100%;
+    height:100%;
+}
+.tree {
+    width: 200px;
+    height: 100%;
+    background: #fff;
+}
+.tree> ul {
+    height: 100%;
+}
+.p_title {
+    color: #333;
+    display: block;
+    padding: 15px;  
+    cursor:pointer;
+    border-bottom: 1px solid #f1f1f1;
+}
+.selected {
+    color: #1890ff;
+    border-bottom: 1px solid #1890ff;
+}
+.p_title> i{
+    padding-right:10px;
+}
+.p_title b{
+    float: right;
+    /* b标签中添加一个过渡动画 */
+    transition:all ease 1s;
+}
+
+.p_title:hover {
+    color: #1890ff;
+    border-bottom: 1px solid #1890ff;
+}
+
+.c_item a {
+    display: block;
+    padding: 10px 20px 10px 40px;
+    background: #fff;
+    color: #333;
+    cursor:pointer;
+}
+
+.c_item a:hover {
+    color: #1890ff;
+    background: #e6f7ff;
+    border-right: 4px solid #1890ff;
+}
+
+
+/* 添加了朝上和朝下的箭头旋转 */
+.down {
+    transform: rotate(180deg);
+}
+.up {
+    transform: rotate(0deg);
+}
