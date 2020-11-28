@@ -36,7 +36,7 @@ window.onload = function () {
         console.log(v); 
     }
 
-    // 但是for..of就可以
+    // 但是for..of就可以用  continue break return
     var arr = [2, 3, 4, 5, 6];
     for(let v of arr){
         if(v == 1){

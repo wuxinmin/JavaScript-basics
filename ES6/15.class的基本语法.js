@@ -29,7 +29,7 @@ window.onload = function () {
 
     // 类继承
     class A {
-        constructor() {A
+        constructor() {
             this.a = "a";
 
         }

@@ -10,7 +10,7 @@ window.onload = function () {
     var obj1 = {};
     obj1.id = 1;
     obj1["x"] = "x";
-    obj1["set" + "nmae"] = "abc";
+    obj1["set" + "name"] = "abc";
     console.log(obj1);  // {id: 1, x: "x", setnmae: "abc"}  
 
     // 1. 链判断运算符

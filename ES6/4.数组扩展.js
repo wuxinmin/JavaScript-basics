@@ -21,7 +21,7 @@ window.onload = function () {
 
     // 3.*find  注意 找出第一个符合条件的值
     // find() 用于找出第一个符合条件的数组成员。找出来就返回值为true的成员 如果没有成员符合条件则返回undefined
-    // 接收三个参数 一次为当前的值，当前值的位置和原数组
+    // 接收三个参数 依次为当前的值，当前值的位置和原数组
     var arr = [3, 4, 7, 9];
     var a = arr.find(function (item, index, arr) {
         // 用于找出第一个符合条件的数组成员
@@ -40,7 +40,7 @@ window.onload = function () {
     //        要填充的值 开始填充位置 停止填充位置 默认为length
     // array.fill(value, start, end)  与copyWithin有点类似
     var arr = ["Orange", "red", "45", "green"];
-    arr.find("abc", 2, 4); // ["Orange", "red", "abc", "abc"]
+    arr.fill("abc", 2, 4); // ["Orange", "red", "abc", "abc"]
 
     // 6.*includes()
     // 定义：方法返回一个布尔值，表示，某个数组是包含给定的值，与字符串includes方法类似

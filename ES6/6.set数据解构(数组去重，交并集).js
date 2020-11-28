@@ -39,10 +39,10 @@ window.onload = function () {
     // console.log(newArray); // [1, 2, 3, 5, 8, 9, 7]
 
     // 类型转换
-    // 1. ...扩展运算符
+    // 1). ...扩展运算符
     var newArray = [...new Set(arr3)];  // [1, 2, 3, 5, 8, 9, 7]
 
-    // 2.Array from()
+    // 2).Array from()
     var arr5 = Array.from(new Set(arr3)); // [1, 2, 3, 5, 8, 9, 7]
 
     // 6.求出大于5的数据且去重
